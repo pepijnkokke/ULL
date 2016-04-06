@@ -25,10 +25,12 @@ class Corpus:
 
     def numWords(self):
         """ Compute the number of words in the corpus. """
+        # NOTE: I have the expectation that this will be more or less O(1)
         pass
 
     def countWord(self,word):
         """ Compute the number of times that a lexical item occurs. """
+        # NOTE: I have the expectation that this will be more or less O(1)
         pass
 
     def pPhoneme(self,phon):
@@ -37,11 +39,9 @@ class Corpus:
 
 
 def prob(param,word,corpus):
-    """
-    Compute the probability of generating a given word.
-    """
+    """ Compute the probability of generating a given word. """
 
-    chanceOfNovel = param.alpha / float(corpus.numWords + param.alpha)
+    chanceOfNovel = param.alpha / float(corpus.numWords() + param.alpha)
 
     if random() < chanceOfNovel:
 
@@ -55,7 +55,7 @@ def prob(param,word,corpus):
 
     else:
 
-        return corpus.countWord(word) / float(corpus.numWords)
+        return corpus.countWord(word) / float(corpus.numWords())
 
 
 def chineseRestaurantProcess(words):
