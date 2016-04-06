@@ -18,9 +18,6 @@ from random      import random
 # corpus : [[[Phoneme]]] (TODO: replace corpus with a dict which tracks n and n^l)
 
 
-Param  = namedtuple('Param', ['alpha', 'pEndWord', 'pEndUtt'])
-
-
 class Corpus:
 
     def numWords(self):
@@ -34,33 +31,32 @@ class Corpus:
         pass
 
     def pPhoneme(self,phon):
-        """ Computer the prior probability of a phoneme. """
+        """ Compute the prior probability of a phoneme. """
         pass
 
 
-def prob(param,word,corpus):
-    """ Compute the probability of generating a given word. """
-
-    chanceOfNovel = param.alpha / float(corpus.numWords() + param.alpha)
-
-    if random() < chanceOfNovel:
-
-        # P(generating M phonemes, followed by a bound)
-        p1 = (1 - param.pEndWord) ** (len(word) - 1) * param.pEndWord
-
-        # P(generating the given sequence of phonemes)
-        p2 = reduce(mul, map(corpus.pPhoneme,word))
-
-        return p1 * p2
-
-    else:
-
-        return corpus.countWord(word) / float(corpus.numWords())
+Param = namedtuple('Param', ['alpha', 'pEndWord', 'pEndUtt', 'corpus'])
 
 
-def chineseRestaurantProcess(words):
-    """
-    Determine the table at which the ith guest sits down, using a Chinese
-    restaurant process.
-    """
-    pass
+class Dist(Param):
+    """ Implementation of the base distribution """
+
+    def prob(self,word):
+        """ Compute the probability of generating a given word. """
+
+        chanceOfNovel =
+            self.param.alpha / float(self.corpus.numWords() + self.param.alpha)
+
+        if random() < chanceOfNovel:
+
+            # P(generating M phonemes, followed by a bound)
+            p1 = (1 - self.param.pEndWord) ** (len(word) - 1) * sefl.param.pEndWord
+
+            # P(generating the given sequence of phonemes)
+            p2 = reduce(mul, map(self.corpus.pPhoneme,word))
+
+            return p1 * p2
+
+        else:
+
+            return self.corpus.countWord(word) / float(self.corpus.numWords())
