@@ -1,5 +1,6 @@
-from operator import mul
-from random   import random
+from collections import namedtuple
+from operator    import mul
+from random      import random
 
 
 # w         : input word
@@ -17,50 +18,44 @@ from random   import random
 # corpus : [[[Phoneme]]] (TODO: replace corpus with a dict which tracks n and n^l)
 
 
-def numberOfWords(corpus):
-    """
-    Compute the number of words in the corpus.
-    """
-    pass
+Param  = namedtuple('Param', ['alpha', 'pEndWord', 'pEndUtt'])
 
 
+class Corpus:
 
-def frequencyOfWord(word,corpus):
-    """
-    Compute the number of times that a lexical item occurs.
-    """
-    pass
+    def numWords(self):
+        """ Compute the number of words in the corpus. """
+        pass
+
+    def countWord(self,word):
+        """ Compute the number of times that a lexical item occurs. """
+        pass
+
+    def pPhoneme(self,phon):
+        """ Computer the prior probability of a phoneme. """
+        pass
 
 
-
-def p(alpha,pBound,word,corpus):
+def prob(param,word,corpus):
     """
     Compute the probability of generating a given word.
     """
 
-    num           = numberOfWords(corpus)
-    chanceOfNovel = alpha / (num + alpha)
+    chanceOfNovel = param.alpha / float(corpus.numWords + param.alpha)
 
     if random() < chanceOfNovel:
 
         # P(generating M phonemes, followed by a bound)
-        pBounds   = (1 - pBound) ** (len(word) - 1) * pBound
+        p1 = (1 - param.pEndWord) ** (len(word) - 1) * param.pEndWord
 
         # P(generating the given sequence of phonemes)
-        pPhonemes = reduce(mul, map(pPhoneme,word))
-        return pBound * pPhonemes
+        p2 = reduce(mul, map(corpus.pPhoneme,word))
+
+        return p1 * p2
 
     else:
 
-        freq = frequencyOfWord(word,corpus)
-        return freq / float(num)
-
-
-def pPhoneme():
-    """
-    Compute the probability of generating a given phoneme.
-    """
-    pass
+        return corpus.countWord(word) / float(corpus.numWords)
 
 
 def chineseRestaurantProcess(words):
