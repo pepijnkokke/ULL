@@ -60,3 +60,45 @@ class Dist(Param):
         else:
 
             return self.corpus.countWord(word) / float(self.corpus.numWords())
+
+
+def find_enclosing_boundaries(boundaries, i):
+    """ Find the nearest boundaries on both sides of i """
+    lower = max([x for x in boundaries if x < i])
+    upper = min([x for x in boundaries if x > i])
+
+    return lower, upper
+
+
+def words_in_utterance(utterance, boundaries):
+    """ Convert an utterance to a list of words based on the given boundaries """
+    out = ''
+    for i, phoneme in enumerate(utterance):
+        if i in boundaries:
+            out += ' '
+
+        out += phoneme
+
+    return out.split(' ')
+
+
+def gibbs_iteration(corpus, dist):
+    for (utterance, boundaries) in corpus:
+        for i, phoneme in enumerate(utterance):
+            lower, upper = find_enclosing_boundaries(boundaries, i)
+            w1 = utterance[lower:upper]
+            w2 = utterance[lower:i]
+            w3 = utterance[i:upper]
+
+            words = words_in_utterance(utterance, boundaries)
+
+            # subtract 1 from the counts to compensate for counting itself
+            n = len(words) - 1
+            p_h1 = ((words.count(w1) - 1 + dist.alpha * dist.prob(w1)) /
+                    (n + dist.alpha)) #TODO: times the utterance-final thing
+
+            p_h2 = ((words.count(w2) + dist.alpha * dist.prob(w2)) / (n + dist.alpha) *
+                    # TODO: utterance-final thing
+                    (words.count(w3) + 1 if w2 == w3 else 0 + dist.alpha *
+                     dist.prob(w3)) / (n + 1 + dist.alpha))
+                    # TODO: utterance-final thing
