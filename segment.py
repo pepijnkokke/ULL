@@ -86,21 +86,21 @@ def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
     #F = f_zero(P,R)
     LP,LR = precision_recall(lexicon_found,lexicon_true)
     LF = f_zero(LP/LR)
-    #BP,BR = 
+    #BP,BR =
     #BF = f_zero(BP,BR)
-    
+
 def precision_recall(found_items,true_items):
     """ Number of correct / number found """
     c = 0
     #For each word in found_items
     for item in found_items:
-    
+
         #If exists in true_items
         if item in true_items:
             c++;
-            
+
     return (c/len(found_items), c/len(true_items))
-    
+
 def f_zero(precision,recall):
     """ Geometric average of precision and recall """
     return (2*precision*recall)/(precision+recall)
