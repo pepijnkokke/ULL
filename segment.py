@@ -38,7 +38,7 @@ class Corpus:
         # NOTE: I have the expectation that this will be more or less O(1)
         pass
 
-    def countWord(self,word):
+    def countWord(self, word):
         """ Compute the number of times that a lexical item occurs. """
         # NOTE: I have the expectation that this will be more or less O(1)
         pass
@@ -46,6 +46,12 @@ class Corpus:
     def pPhoneme(self, phon):
         """ Compute the prior probability of a phoneme. """
         return float(self.text.count(phon)) / len(self.text)
+
+    def p0(self, word, p_hashtag=0.5):
+        p = reduce(mul, map(self.pPhoneme, word))
+        return p_hashtag * (1 - p_hashtag)**(len(word) - 1) * p
+
+
 
 
 def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
@@ -100,12 +106,10 @@ def split_on_boundaries(text, boundaries):
     return out.split(' ')
 
 
-def p0(word, corpus, p_hashtag=0.5):
-    p = reduce(mul, map(corpus.pPhoneme, word))
-    return p_hashtag * (1 - p_hashtag)**(len(word) - 1) * p
-
-
 def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
+    words = split_on_boundaries(corpus.text, corpus.boundaries)
+    n = len(words) - 1
+
     for i, phoneme in enumerate(corpus.text):
         print i
         if i in corpus.utt_boundaries:
@@ -118,19 +122,17 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
         if i in corpus.boundaries:
             corpus.boundaries.remove(i)
-        words = split_on_boundaries(corpus.text, corpus.boundaries)
 
         # subtract 1 from the counts to compensate for counting itself
-        n = len(words) - 1
         utt = (len(corpus.utt_boundaries) if upper in corpus.utt_boundaries else
                n - len(corpus.utt_boundaries))
-        p_h1 = ((words.count(w1) - 1 + alpha * p0(w1, corpus)) /
+        p_h1 = ((words.count(w1) - 1 + alpha * corpus.p0(w1)) /
                 (n + alpha)) * ((utt + 2) / (n + rho))
 
-        p_h2 = ((words.count(w2) + alpha * p0(w2, corpus)) / (n + alpha) *
+        p_h2 = ((words.count(w2) + alpha * corpus.p0(w2)) / (n + alpha) *
                 ((n - len(corpus.utt_boundaries) + rho/2) / (n + rho)) *
                 ((words.count(w3) + 1 if w2 == w3 else 0 + alpha *
-                  p0(w3, corpus)) / (n + 1 + alpha)) *
+                  corpus.p0(w3)) / (n + 1 + alpha)) *
                 ((utt + 1 if w2 == w3 else 0 + rho/2) / (n + 1 + rho)))
 
         print '{}, {}'.format(p_h1, p_h2)
