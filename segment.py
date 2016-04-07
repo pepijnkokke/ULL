@@ -27,11 +27,13 @@ class Corpus:
 
         with open(path, 'r') as f:
             for utterance in f:
+                utterance = utterance.strip()
                 self.text += utterance
                 self.utt_boundaries.append(self.utt_boundaries[-1] +
                                            len(utterance))
 
-        self.boundaries = copy(self.utt_boundaries)
+        self.utt_boundaries = set(self.utt_boundaries)
+        self.boundaries = set()
 
     def numWords(self):
         """ Compute the number of words in the corpus. """
@@ -51,7 +53,17 @@ class Corpus:
         p = reduce(mul, map(self.pPhoneme, word))
         return p_hashtag * (1 - p_hashtag)**(len(word) - 1) * p
 
+    def get_words(self):
+        """ Convert an utterance to a list of words based on the given boundaries """
+        out = ''
+        for i, phoneme in enumerate(self.text):
+            # set union
+            if i in self.boundaries | self.utt_boundaries:
+                out += ' '
 
+            out += phoneme
+
+        return out.strip().split(' ')
 
 
 def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
@@ -88,34 +100,22 @@ def f_zero(precision,recall):
 
 def find_enclosing_boundaries(boundaries, i):
     """ Find the nearest boundaries on both sides of i """
-    lower = max([x for x in boundaries if x < i])
-    upper = min([x for x in boundaries if x > i])
+    lower = max({x for x in boundaries if x < i})
+    upper = min({x for x in boundaries if x > i})
 
     return lower, upper
 
 
-def split_on_boundaries(text, boundaries):
-    """ Convert an utterance to a list of words based on the given boundaries """
-    out = ''
-    for i, phoneme in enumerate(text):
-        if i in boundaries:
-            out += ' '
-
-        out += phoneme
-
-    return out.split(' ')
-
-
 def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
-    words = split_on_boundaries(corpus.text, corpus.boundaries)
+    words = corpus.get_words()
     n = len(words) - 1
 
     for i, phoneme in enumerate(corpus.text):
-        print i
+        # utterance boundaries are unambiguous
         if i in corpus.utt_boundaries:
             continue
 
-        lower, upper = find_enclosing_boundaries(corpus.boundaries, i)
+        lower, upper = find_enclosing_boundaries(corpus.utt_boundaries | corpus.boundaries, i)
         w1 = corpus.text[lower:upper]
         w2 = corpus.text[lower:i]
         w3 = corpus.text[i:upper]
@@ -129,13 +129,14 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
         p_h1 = ((words.count(w1) - 1 + alpha * corpus.p0(w1)) /
                 (n + alpha)) * ((utt + 2) / (n + rho))
 
-        p_h2 = ((words.count(w2) + alpha * corpus.p0(w2)) / (n + alpha) *
+        p_h2 = (((words.count(w2) + alpha * corpus.p0(w2)) / (n + alpha)) *
                 ((n - len(corpus.utt_boundaries) + rho/2) / (n + rho)) *
                 ((words.count(w3) + 1 if w2 == w3 else 0 + alpha *
                   corpus.p0(w3)) / (n + 1 + alpha)) *
                 ((utt + 1 if w2 == w3 else 0 + rho/2) / (n + 1 + rho)))
 
-        print '{}, {}'.format(p_h1, p_h2)
+        print '{}: {:.2e}, {:.2e}'.format(i, p_h1, p_h2)
+
         if p_h2 > p_h1:
             corpus.boundaries.add(i)
 
