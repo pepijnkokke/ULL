@@ -1,6 +1,8 @@
+from sys         import argv
 from collections import namedtuple
 from operator    import mul
 from random      import random
+from copy        import copy
 
 
 # w         : input word
@@ -19,6 +21,16 @@ from random      import random
 
 
 class Corpus:
+    def __init__(self, path):
+        self.utt_boundaries = [0]
+        self.text = ''
+
+        with open(path, 'r') as f:
+            for utterance in f:
+                self.text += utterance
+                self.utt_boundaries += self.utt_boundaries[-1] + len(utterance)
+
+        self.boundaries = copy(self.utt_boundaries)
 
     def numWords(self):
         """ Compute the number of words in the corpus. """
@@ -30,9 +42,9 @@ class Corpus:
         # NOTE: I have the expectation that this will be more or less O(1)
         pass
 
-    def pPhoneme(self,phon):
+    def pPhoneme(self, phon):
         """ Compute the prior probability of a phoneme. """
-        pass
+        return float(self.text.count(phon)) / len(self.text)
 
 
 Param = namedtuple('Param', ['alpha', 'pEndWord', 'pEndUtt', 'corpus'])
@@ -114,22 +126,31 @@ def words_in_utterance(utterance, boundaries):
 
 
 def gibbs_iteration(corpus, dist):
-    for (utterance, boundaries) in corpus:
-        for i, phoneme in enumerate(utterance):
-            lower, upper = find_enclosing_boundaries(boundaries, i)
-            w1 = utterance[lower:upper]
-            w2 = utterance[lower:i]
-            w3 = utterance[i:upper]
+    for i, phoneme in enumerate(corpus.text):
+        lower, upper = find_enclosing_boundaries(corpus.boundaries, i)
+        w1 = corpus.text[lower:upper]
+        w2 = corpus.text[lower:i]
+        w3 = corpus.text[i:upper]
 
-            words = words_in_utterance(utterance, boundaries)
+        words = words_in_utterance(corpus.text, boundaries)
 
-            # subtract 1 from the counts to compensate for counting itself
-            n = len(words) - 1
-            p_h1 = ((words.count(w1) - 1 + dist.alpha * dist.prob(w1)) /
-                    (n + dist.alpha)) #TODO: times the utterance-final thing
+        # subtract 1 from the counts to compensate for counting itself
+        n = len(words) - 1
+        utt = (len(utterance_boundaries) if upper in utterance_boundaries else
+               n - len(utterance_boundaries))
+        p_h1 = ((words.count(w1) - 1 + dist.alpha * dist.prob(w1)) /
+                (n + dist.alpha)) * (utt + )
 
-            p_h2 = ((words.count(w2) + dist.alpha * dist.prob(w2)) / (n + dist.alpha) *
-                    # TODO: utterance-final thing
-                    (words.count(w3) + 1 if w2 == w3 else 0 + dist.alpha *
-                     dist.prob(w3)) / (n + 1 + dist.alpha))
-                    # TODO: utterance-final thing
+        p_h2 = ((words.count(w2) + dist.alpha * dist.prob(w2)) / (n + dist.alpha) *
+                # TODO: utterance-final thing
+                (words.count(w3) + 1 if w2 == w3 else 0 + dist.alpha *
+                 dist.prob(w3)) / (n + 1 + dist.alpha))
+                # TODO: utterance-final thing
+
+
+def main():
+    corpus = Corpus(argv[1])
+
+
+if __name__ == "__main__":
+    main()
