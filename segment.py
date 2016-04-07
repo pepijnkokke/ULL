@@ -88,12 +88,6 @@ def precision_recall(found_items,true_items):
             c++;
             
     return (c/len(found_items), c/len(true_items))
-        
-    
-    
-def recall(found_items,true_items):
-    """ Number of correct / number of all correct """
-    #ToDo
     
 def f_zero(precision,recall):
     """ Geometric average of precision and recall """
