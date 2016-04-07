@@ -3,6 +3,7 @@ from collections import namedtuple
 from operator    import mul
 from random      import random
 from copy        import copy
+from IPython import embed
 
 
 # w         : input word
@@ -22,18 +23,23 @@ from copy        import copy
 
 class Corpus:
     def __init__(self, path):
-        self.utt_boundaries = [0]
+        utt_boundaries = [0]
         self.text = ''
 
         with open(path, 'r') as f:
             for utterance in f:
                 utterance = utterance.strip()
                 self.text += utterance
-                self.utt_boundaries.append(self.utt_boundaries[-1] +
-                                           len(utterance))
+                utt_boundaries.append(utt_boundaries[-1] +
+                                      len(utterance))
 
-        self.utt_boundaries = set(self.utt_boundaries)
-        self.boundaries = set()
+        utt_bitstring = [0] * (len(self.text) + 1)
+        boundary_bitstring = [0] * (len(self.text) + 1)
+        for bound in utt_boundaries:
+            utt_bitstring[bound] = 1
+
+        self.utt_boundaries = utt_bitstring
+        self.boundaries = boundary_bitstring
 
     def numWords(self):
         """ Compute the number of words in the corpus. """
@@ -53,17 +59,20 @@ class Corpus:
         p = reduce(mul, map(self.pPhoneme, word))
         return p_hashtag * (1 - p_hashtag)**(len(word) - 1) * p
 
-    def get_words(self):
-        """ Convert an utterance to a list of words based on the given boundaries """
-        out = ''
-        for i, phoneme in enumerate(self.text):
-            # set union
-            if i in self.boundaries | self.utt_boundaries:
-                out += ' '
 
-            out += phoneme
+def get_words(text, boundaries):
+    out = []
+    for phoneme, i in zip(text, boundaries):
+        if i == 1:
+            out.append([])
 
-        return out.strip().split(' ')
+        out[-1].append(phoneme)
+
+    return [''.join(word) for word in out]
+
+
+def list_or(xs, ys):
+    return [1 if x == 1 or y == 1 else 0 for x, y in zip(xs, ys)]
 
 
 def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
@@ -98,47 +107,62 @@ def f_zero(precision,recall):
     """ Geometric average of precision and recall """
     return (2*precision*recall)/(precision+recall)
 
+
 def find_enclosing_boundaries(boundaries, i):
     """ Find the nearest boundaries on both sides of i """
-    lower = max({x for x in boundaries if x < i})
-    upper = min({x for x in boundaries if x > i})
+    lower = i - 1
+    while boundaries[lower] != 1:
+        lower -= 1
+
+    upper = i + 1
+    while boundaries[upper] != 1:
+        upper += 1
 
     return lower, upper
 
 
 def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
-    words = corpus.get_words()
-    n = len(words) - 1
-
     for i, phoneme in enumerate(corpus.text):
         # utterance boundaries are unambiguous
-        if i in corpus.utt_boundaries:
+        if corpus.utt_boundaries[i] == 1:
             continue
 
-        lower, upper = find_enclosing_boundaries(corpus.utt_boundaries | corpus.boundaries, i)
+        boundaries = list_or(corpus.utt_boundaries, corpus.boundaries)
+        lower, upper = find_enclosing_boundaries(boundaries, i)
         w1 = corpus.text[lower:upper]
         w2 = corpus.text[lower:i]
         w3 = corpus.text[i:upper]
 
-        if i in corpus.boundaries:
-            corpus.boundaries.remove(i)
+        h_ = corpus.text[:lower] + corpus.text[upper:]
+        h_boundaries = boundaries[:lower] + boundaries[upper:]
+        h_utt_boundaries = corpus.utt_boundaries[:lower] + corpus.utt_boundaries[upper:]
 
-        # subtract 1 from the counts to compensate for counting itself
-        utt = (len(corpus.utt_boundaries) if upper in corpus.utt_boundaries else
-               n - len(corpus.utt_boundaries))
-        p_h1 = ((words.count(w1) - 1 + alpha * corpus.p0(w1)) /
-                (n + alpha)) * ((utt + 2) / (n + rho))
+        h_words = get_words(h_, h_boundaries)
+        n_ = len(h_words) # TODO: number of words or number of unique words?
 
-        p_h2 = (((words.count(w2) + alpha * corpus.p0(w2)) / (n + alpha)) *
-                ((n - len(corpus.utt_boundaries) + rho/2) / (n + rho)) *
-                ((words.count(w3) + 1 if w2 == w3 else 0 + alpha *
-                  corpus.p0(w3)) / (n + 1 + alpha)) *
-                ((utt + 1 if w2 == w3 else 0 + rho/2) / (n + 1 + rho)))
+        boundaries[i] = 0
 
-        print '{}: {:.2e}, {:.2e}'.format(i, p_h1, p_h2)
+        n_dollar = h_utt_boundaries.count(1) - 1
+        nu = n_dollar if corpus.utt_boundaries[upper] == 1 else n_ - n_dollar
+
+        p_h1_factor1 = (h_words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
+        
+        p_h1_factor2 = (nu + rho/2) / (n_ + rho)
+
+        p_h2_factor1 = (h_words.count(w2) + alpha * corpus.p0(w2)) / (n_ + alpha)
+        p_h2_factor2 = (n_ - n_dollar + rho/2) / (n_ + rho)
+        p_h2_factor3 = ((h_words.count(w3) + 1 if w2 == w3 else 0 + alpha *
+                  corpus.p0(w3)) / (n_ + 1 + alpha))
+        p_h2_factor4 = ((nu + 1 if w2 == w3 else 0 + rho/2) / (n_ + 1 + rho))
+        
+        p_h1 = p_h1_factor1 * p_h1_factor2
+        p_h2 = p_h2_factor1 * p_h2_factor2 * p_h2_factor3 * p_h2_factor4
+
+        print '{}: {:.2e}, {:.2e} {}'.format(i, p_h1, p_h2,
+                                             '(adding boundary)' if p_h2 > p_h1 else '')
 
         if p_h2 > p_h1:
-            corpus.boundaries.add(i)
+            corpus.boundaries[i] = 1
 
 
 def main():
