@@ -3,7 +3,8 @@ from collections import namedtuple
 from operator    import mul
 from random      import random
 from copy        import copy
-from IPython import embed
+from cPickle     import dump, load
+from os.path     import exists
 
 
 # w         : input word
@@ -19,6 +20,9 @@ from IPython import embed
 # words     : segmented utterance
 
 # corpus : [[[Phoneme]]] (TODO: replace corpus with a dict which tracks n and n^l)
+
+
+FILENAME = 'boundaries.pickle'
 
 
 class Corpus:
@@ -122,44 +126,53 @@ def find_enclosing_boundaries(boundaries, i):
 
 
 def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
+    boundaries = list_or(corpus.utt_boundaries, corpus.boundaries)
+    words = get_words(corpus.text, boundaries)
+
     for i, phoneme in enumerate(corpus.text):
         # utterance boundaries are unambiguous
         if corpus.utt_boundaries[i] == 1:
             continue
 
-        boundaries = list_or(corpus.utt_boundaries, corpus.boundaries)
+        if i == 500:
+            return
+
         lower, upper = find_enclosing_boundaries(boundaries, i)
         w1 = corpus.text[lower:upper]
         w2 = corpus.text[lower:i]
         w3 = corpus.text[i:upper]
 
-        h_ = corpus.text[:lower] + corpus.text[upper:]
-        h_boundaries = boundaries[:lower] + boundaries[upper:]
         h_utt_boundaries = corpus.utt_boundaries[:lower] + corpus.utt_boundaries[upper:]
 
-        h_words = get_words(h_, h_boundaries)
-        n_ = len(h_words) # TODO: number of words or number of unique words?
-
-        boundaries[i] = 0
+        if boundaries[i] == 0:
+            n_ = len(words) - 1
+        else:
+            n_ = len(words) - 2
 
         n_dollar = h_utt_boundaries.count(1) - 1
         nu = n_dollar if corpus.utt_boundaries[upper] == 1 else n_ - n_dollar
 
-        p_h1_factor1 = (h_words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
+        if boundaries[i] == 0:
+            p_h1_factor1 = (words.count(w1) - 1 + alpha * corpus.p0(w1)) / (n_ + alpha)
+        else:
+            p_h1_factor1 = (words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
         
         p_h1_factor2 = (nu + rho/2) / (n_ + rho)
 
-        p_h2_factor1 = (h_words.count(w2) + alpha * corpus.p0(w2)) / (n_ + alpha)
+        if boundaries[i] == 0:
+            p_h2_factor1 = (words.count(w2) + alpha * corpus.p0(w2)) / (n_ + alpha)
+            p_h2_factor3 = ((words.count(w3) + 1 if w2 == w3 else 0 + alpha *
+                             corpus.p0(w3)) / (n_ + 1 + alpha))
+        else:
+            p_h2_factor1 = (words.count(w2) - 1 + alpha * corpus.p0(w2)) / (n_ + alpha)
+            p_h2_factor3 = ((words.count(w3) -1 + 1 if w2 == w3 else 0 + alpha *
+                             corpus.p0(w3)) / (n_ + 1 + alpha))
+
         p_h2_factor2 = (n_ - n_dollar + rho/2) / (n_ + rho)
-        p_h2_factor3 = ((h_words.count(w3) + 1 if w2 == w3 else 0 + alpha *
-                  corpus.p0(w3)) / (n_ + 1 + alpha))
         p_h2_factor4 = ((nu + 1 if w2 == w3 else 0 + rho/2) / (n_ + 1 + rho))
         
         p_h1 = p_h1_factor1 * p_h1_factor2
         p_h2 = p_h2_factor1 * p_h2_factor2 * p_h2_factor3 * p_h2_factor4
-
-        print '{}: {:.2e}, {:.2e} {}'.format(i, p_h1, p_h2,
-                                             '(adding boundary)' if p_h2 > p_h1 else '')
 
         if p_h2 > p_h1:
             corpus.boundaries[i] = 1
@@ -167,8 +180,19 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
 def main():
     corpus = Corpus(argv[1])
-    gibbs_iteration(corpus)
-    print corpus.boundaries
+
+    if exists(FILENAME):
+        print 'Loading existing data from {}'.format(FILENAME)
+        with open(FILENAME, 'rb') as f:
+            boundaries = load(f)
+    
+    for i in range(int(argv[2])):
+        print i
+        gibbs_iteration(corpus)
+
+    with open(FILENAME, 'wb') as f:
+        print 'Saving data to {}'.format(FILENAME)
+        dump(corpus.boundaries, f)
 
 
 if __name__ == "__main__":
