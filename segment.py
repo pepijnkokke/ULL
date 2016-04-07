@@ -28,7 +28,8 @@ class Corpus:
         with open(path, 'r') as f:
             for utterance in f:
                 self.text += utterance
-                self.utt_boundaries += self.utt_boundaries[-1] + len(utterance)
+                self.utt_boundaries.append(self.utt_boundaries[-1] +
+                                           len(utterance))
 
         self.boundaries = copy(self.utt_boundaries)
 
@@ -46,32 +47,6 @@ class Corpus:
         """ Compute the prior probability of a phoneme. """
         return float(self.text.count(phon)) / len(self.text)
 
-
-Param = namedtuple('Param', ['alpha', 'pEndWord', 'pEndUtt', 'corpus'])
-
-
-class Dist(Param):
-    """ Implementation of the base distribution """
-
-    def prob(self,word):
-        """ Compute the probability of generating a given word. """
-
-        chanceOfNovel =
-            self.param.alpha / float(self.corpus.numWords() + self.param.alpha)
-
-        if random() < chanceOfNovel:
-
-            # P(generating M phonemes, followed by a bound)
-            p1 = (1 - self.param.pEndWord) ** (len(word) - 1) * sefl.param.pEndWord
-
-            # P(generating the given sequence of phonemes)
-            p2 = reduce(mul, map(self.corpus.pPhoneme,word))
-
-            return p1 * p2
-
-        else:
-
-            return self.corpus.countWord(word) / float(self.corpus.numWords())
 
 def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
     """ Evaluate precision, recall and F0 for:
@@ -97,8 +72,8 @@ def precision_recall(found_items,true_items):
 
         #If exists in true_items
         if item in true_items:
-            c++;
-
+            c += 1
+            
     return (c/len(found_items), c/len(true_items))
 
 def f_zero(precision,recall):
@@ -113,10 +88,10 @@ def find_enclosing_boundaries(boundaries, i):
     return lower, upper
 
 
-def words_in_utterance(utterance, boundaries):
+def split_on_boundaries(text, boundaries):
     """ Convert an utterance to a list of words based on the given boundaries """
     out = ''
-    for i, phoneme in enumerate(utterance):
+    for i, phoneme in enumerate(text):
         if i in boundaries:
             out += ' '
 
@@ -125,31 +100,48 @@ def words_in_utterance(utterance, boundaries):
     return out.split(' ')
 
 
-def gibbs_iteration(corpus, dist):
+def p0(word, corpus, p_hashtag=0.5):
+    p = reduce(mul, map(corpus.pPhoneme, word))
+    return p_hashtag * (1 - p_hashtag)**(len(word) - 1) * p
+
+
+def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
     for i, phoneme in enumerate(corpus.text):
+        print i
+        if i in corpus.utt_boundaries:
+            continue
+
         lower, upper = find_enclosing_boundaries(corpus.boundaries, i)
         w1 = corpus.text[lower:upper]
         w2 = corpus.text[lower:i]
         w3 = corpus.text[i:upper]
 
-        words = words_in_utterance(corpus.text, boundaries)
+        if i in corpus.boundaries:
+            corpus.boundaries.remove(i)
+        words = split_on_boundaries(corpus.text, corpus.boundaries)
 
         # subtract 1 from the counts to compensate for counting itself
         n = len(words) - 1
-        utt = (len(utterance_boundaries) if upper in utterance_boundaries else
-               n - len(utterance_boundaries))
-        p_h1 = ((words.count(w1) - 1 + dist.alpha * dist.prob(w1)) /
-                (n + dist.alpha)) * (utt + )
+        utt = (len(corpus.utt_boundaries) if upper in corpus.utt_boundaries else
+               n - len(corpus.utt_boundaries))
+        p_h1 = ((words.count(w1) - 1 + alpha * p0(w1, corpus)) /
+                (n + alpha)) * ((utt + 2) / (n + rho))
 
-        p_h2 = ((words.count(w2) + dist.alpha * dist.prob(w2)) / (n + dist.alpha) *
-                # TODO: utterance-final thing
-                (words.count(w3) + 1 if w2 == w3 else 0 + dist.alpha *
-                 dist.prob(w3)) / (n + 1 + dist.alpha))
-                # TODO: utterance-final thing
+        p_h2 = ((words.count(w2) + alpha * p0(w2, corpus)) / (n + alpha) *
+                ((n - len(corpus.utt_boundaries) + rho/2) / (n + rho)) *
+                ((words.count(w3) + 1 if w2 == w3 else 0 + alpha *
+                  p0(w3, corpus)) / (n + 1 + alpha)) *
+                ((utt + 1 if w2 == w3 else 0 + rho/2) / (n + 1 + rho)))
+
+        print '{}, {}'.format(p_h1, p_h2)
+        if p_h2 > p_h1:
+            corpus.boundaries.add(i)
 
 
 def main():
     corpus = Corpus(argv[1])
+    gibbs_iteration(corpus)
+    print corpus.boundaries
 
 
 if __name__ == "__main__":
