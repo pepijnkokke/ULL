@@ -65,25 +65,33 @@ def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
     """ Evaluate precision, recall and F0 for:
         - Words (word boundaries placed correctly before and after the word)
         - Lexical (lexical types found)
-        - "Potentially ambiguous boundaries, i.e. utterance boundaries not included in counts". Kind of vague, will ask on thursday
+        - Boundaries (rather than looking at words, look at just the boundary positions excluding the utterance boundaries, as they are already correct)
     """
     #Note: these are exactly the evaluations as done by Goldwater & friends
     #words_found = #something with segmented_found
     #words_true = #something with segmented_true
-    #P = precision(words_found,words_true)
-    #R = recall(words_found,words_true)
+    #P,R = precision_recall(words_found,words_true)
     #F = f_zero(P,R)
-    LP = precision(lexicon_found,lexicon_true)
-    LR = recall(lexicon_found,lexicon_true)
+    LP,LR = precision_recall(lexicon_found,lexicon_true)
     LF = f_zero(LP/LR)
-    #BP =
-    #BR =
+    #BP,BR = 
     #BF = f_zero(BP,BR)
-def precision(found,true):
-    """ Number of correct / number found """
-    #ToDo
     
-def recall(found,true):
+def precision_recall(found_items,true_items):
+    """ Number of correct / number found """
+    c = 0
+    #For each word in found_items
+    for item in found_items:
+    
+        #If exists in true_items
+        if item in true_items:
+            c++;
+            
+    return (c/len(found_items), c/len(true_items))
+        
+    
+    
+def recall(found_items,true_items):
     """ Number of correct / number of all correct """
     #ToDo
     
