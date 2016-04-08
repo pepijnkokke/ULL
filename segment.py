@@ -45,6 +45,11 @@ class Corpus:
         self.utt_boundaries = utt_bitstring
         self.boundaries = boundary_bitstring
 
+        # precompute the phoneme probabilities
+        self.pPhonemes = {}
+        for phoneme in set(self.text):
+            self.pPhonemes[phoneme] = float(self.text.count(phoneme)) / len(self.text)
+
     def numWords(self):
         """ Compute the number of words in the corpus. """
         # NOTE: I have the expectation that this will be more or less O(1)
@@ -57,7 +62,7 @@ class Corpus:
 
     def pPhoneme(self, phon):
         """ Compute the prior probability of a phoneme. """
-        return float(self.text.count(phon)) / len(self.text)
+        return self.pPhonemes[phon]
 
     def p0(self, word, p_hashtag=0.5):
         p = reduce(mul, map(self.pPhoneme, word))
