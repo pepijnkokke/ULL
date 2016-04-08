@@ -139,9 +139,6 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
         if corpus.utt_boundaries[i] == 1:
             continue
 
-        if i == 500:
-            return
-
         lower, upper = find_enclosing_boundaries(boundaries, i)
         w1 = corpus.text[lower:upper]
         w2 = corpus.text[lower:i]
