@@ -185,6 +185,8 @@ def main():
         print 'Loading existing data from {}'.format(FILENAME)
         with open(FILENAME, 'rb') as f:
             boundaries = load(f)
+
+        corpus.boundaries = boundaries
     
     for i in range(int(argv[2])):
         print i
