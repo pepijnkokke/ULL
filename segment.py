@@ -110,11 +110,11 @@ def find_enclosing_bounds(bounds, i):
     # that would give any speed increase but whatever
 
     lower = i - 1
-    while bounds[lower] != 1:
+    while not bounds[lower]:
         lower -= 1
 
     upper = i + 1
-    while bounds[upper] != 1:
+    while not bounds[upper]:
         upper += 1
 
     return lower, upper
@@ -123,7 +123,7 @@ def find_enclosing_bounds(bounds, i):
 def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
     for i, phoneme in enumerate(corpus.text):
         # utterance bounds are unambiguous
-        if corpus.uttr_bounds[i] == 1:
+        if corpus.uttr_bounds[i]:
             continue
 
         # we COULD _||_ them all together here, but simply checking both arrays
@@ -144,7 +144,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
         bounds.set(0,i)
 
         n_dollar = h_uttr_bounds.count(1) - 1
-        nu       = n_dollar if corpus.uttr_bounds[upper] == 1 else n_ - n_dollar
+        nu       = n_dollar if corpus.uttr_bounds[upper] else n_ - n_dollar
 
         p_h1_factor1 = (h_words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
 
@@ -163,7 +163,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
                                              '(adding boundary)' if p_h2 > p_h1 else '')
 
         if p_h2 > p_h1:
-            corpus.word_bounds[i] = 1
+            corpus.word_bounds.set(1,i)
 
 
 def main():
