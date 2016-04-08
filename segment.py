@@ -65,7 +65,7 @@ class Corpus:
         return self.pPhonemes[phon]
 
     def p0(self, word, p_hashtag=0.5):
-        p = reduce(mul, map(self.pPhoneme, word))
+        p = reduce(mul, [self.pPhonemes[ph] for ph in word])
         return p_hashtag * (1 - p_hashtag)**(len(word) - 1) * p
 
 
