@@ -109,7 +109,7 @@ def precision_recall(found_items,true_items):
         #If exists in true_items
         if item in true_items:
             c += 1
-            
+
     return (c/len(found_items), c/len(true_items))
 
 def f_zero(precision,recall):
@@ -161,7 +161,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
             p_h1_factor1 = (words.count(w1) - 1 + alpha * corpus.p0(w1)) / (n_ + alpha)
         else:
             p_h1_factor1 = (words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
-        
+
         p_h1_factor2 = (nu + rho/2) / (n_ + rho)
 
         if boundaries[i] == 0:
@@ -175,7 +175,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
         p_h2_factor2 = (n_ - n_dollar + rho/2) / (n_ + rho)
         p_h2_factor4 = ((nu + 1 if w2 == w3 else 0 + rho/2) / (n_ + 1 + rho))
-        
+
         p_h1 = p_h1_factor1 * p_h1_factor2
         p_h2 = p_h2_factor1 * p_h2_factor2 * p_h2_factor3 * p_h2_factor4
 
@@ -192,7 +192,7 @@ def main():
             boundaries = load(f)
 
         corpus.boundaries = boundaries
-    
+
     for i in range(int(argv[2])):
         print i
         gibbs_iteration(corpus)
