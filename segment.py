@@ -3,7 +3,8 @@ from collections import namedtuple
 from operator    import mul
 from random      import random
 from copy        import copy
-from IPython import embed
+from IPython     import embed
+from bitstring   import BitArray
 
 
 # w         : input word
@@ -23,33 +24,29 @@ from IPython import embed
 
 class Corpus:
     def __init__(self, path):
-        utt_boundaries = [0]
+
+        # store positions of utterance boundaries
+        uttr_bound_pos = [0]
+
         self.text = ''
 
+        # add each utterance (stripped) to the text
         with open(path, 'r') as f:
-            for utterance in f:
-                utterance = utterance.strip()
-                self.text += utterance
-                utt_boundaries.append(utt_boundaries[-1] +
-                                      len(utterance))
+            for uttr in f:
+                uttr        = uttr.strip()
+                self.text += uttr
+                uttr_bound_pos.append(uttr_bound_pos[-1] + len(uttr))
 
-        utt_bitstring = [0] * (len(self.text) + 1)
-        boundary_bitstring = [0] * (len(self.text) + 1)
-        for bound in utt_boundaries:
-            utt_bitstring[bound] = 1
+        uttr_bounds = BitArray(length=len(self.corpus + 1))
+        uttr_bounds.setall(0)
+        word_bounds = BitArray(length=len(self.corpus + 1))
+        word_bounds.setall(0)
 
-        self.utt_boundaries = utt_bitstring
-        self.boundaries = boundary_bitstring
+        for pos in uttr_bound_pos:
+            uttr_bounds.set(1,pos)
 
-    def numWords(self):
-        """ Compute the number of words in the corpus. """
-        # NOTE: I have the expectation that this will be more or less O(1)
-        pass
-
-    def countWord(self, word):
-        """ Compute the number of times that a lexical item occurs. """
-        # NOTE: I have the expectation that this will be more or less O(1)
-        pass
+        self.uttr_bounds = uttr_bounds
+        self.word_bounds = word_bounds
 
     def pPhoneme(self, phon):
         """ Compute the prior probability of a phoneme. """
@@ -60,9 +57,9 @@ class Corpus:
         return p_hashtag * (1 - p_hashtag)**(len(word) - 1) * p
 
 
-def get_words(text, boundaries):
+def get_words(text, bounds):
     out = []
-    for phoneme, i in zip(text, boundaries):
+    for phoneme, i in zip(text, bounds):
         if i == 1:
             out.append([])
 
@@ -77,9 +74,9 @@ def list_or(xs, ys):
 
 def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
     """ Evaluate precision, recall and F0 for:
-        - Words (word boundaries placed correctly before and after the word)
+        - Words (word bounds placed correctly before and after the word)
         - Lexical (lexical types found)
-        - Boundaries (rather than looking at words, look at just the boundary positions excluding the utterance boundaries, as they are already correct)
+        - Bounds (rather than looking at words, look at just the boundary positions excluding the utterance bounds, as they are already correct)
     """
     #Note: these are exactly the evaluations as done by Goldwater & friends
     #words_found = #something with segmented_found
@@ -100,7 +97,7 @@ def precision_recall(found_items,true_items):
         #If exists in true_items
         if item in true_items:
             c += 1
-            
+
     return (c/len(found_items), c/len(true_items))
 
 def f_zero(precision,recall):
@@ -108,14 +105,14 @@ def f_zero(precision,recall):
     return (2*precision*recall)/(precision+recall)
 
 
-def find_enclosing_boundaries(boundaries, i):
-    """ Find the nearest boundaries on both sides of i """
+def find_enclosing_bounds(bounds, i):
+    """ Find the nearest bounds on both sides of i """
     lower = i - 1
-    while boundaries[lower] != 1:
+    while bounds[lower] != 1:
         lower -= 1
 
     upper = i + 1
-    while boundaries[upper] != 1:
+    while bounds[upper] != 1:
         upper += 1
 
     return lower, upper
@@ -123,30 +120,32 @@ def find_enclosing_boundaries(boundaries, i):
 
 def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
     for i, phoneme in enumerate(corpus.text):
-        # utterance boundaries are unambiguous
-        if corpus.utt_boundaries[i] == 1:
+        # utterance bounds are unambiguous
+        if corpus.uttr_bounds[i] == 1:
             continue
 
-        boundaries = list_or(corpus.utt_boundaries, corpus.boundaries)
-        lower, upper = find_enclosing_boundaries(boundaries, i)
+        # we COULD _||_ them all together here, but simply checking both arrays
+        # is probably faster
+        bounds = list_or(corpus.uttr_bounds, corpus.word_bounds)
+        lower, upper = find_enclosing_bounds(bounds, i)
         w1 = corpus.text[lower:upper]
         w2 = corpus.text[lower:i]
         w3 = corpus.text[i:upper]
 
         h_ = corpus.text[:lower] + corpus.text[upper:]
-        h_boundaries = boundaries[:lower] + boundaries[upper:]
-        h_utt_boundaries = corpus.utt_boundaries[:lower] + corpus.utt_boundaries[upper:]
+        h_bounds = bounds[:lower] + bounds[upper:]
+        h_uttr_bounds = corpus.uttr_bounds[:lower] + corpus.uttr_bounds[upper:]
 
-        h_words = get_words(h_, h_boundaries)
+        h_words = get_words(h_, h_bounds)
         n_ = len(h_words) # TODO: number of words or number of unique words?
 
-        boundaries[i] = 0
+        bounds[i] = 0
 
-        n_dollar = h_utt_boundaries.count(1) - 1
-        nu = n_dollar if corpus.utt_boundaries[upper] == 1 else n_ - n_dollar
+        n_dollar = h_uttr_bounds.count(1) - 1
+        nu = n_dollar if corpus.uttr_bounds[upper] == 1 else n_ - n_dollar
 
         p_h1_factor1 = (h_words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
-        
+
         p_h1_factor2 = (nu + rho/2) / (n_ + rho)
 
         p_h2_factor1 = (h_words.count(w2) + alpha * corpus.p0(w2)) / (n_ + alpha)
@@ -154,7 +153,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
         p_h2_factor3 = ((h_words.count(w3) + 1 if w2 == w3 else 0 + alpha *
                   corpus.p0(w3)) / (n_ + 1 + alpha))
         p_h2_factor4 = ((nu + 1 if w2 == w3 else 0 + rho/2) / (n_ + 1 + rho))
-        
+
         p_h1 = p_h1_factor1 * p_h1_factor2
         p_h2 = p_h2_factor1 * p_h2_factor2 * p_h2_factor3 * p_h2_factor4
 
@@ -162,13 +161,13 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
                                              '(adding boundary)' if p_h2 > p_h1 else '')
 
         if p_h2 > p_h1:
-            corpus.boundaries[i] = 1
+            corpus.word_bounds[i] = 1
 
 
 def main():
     corpus = Corpus(argv[1])
     gibbs_iteration(corpus)
-    print corpus.boundaries
+    print corpus.word_bounds
 
 
 if __name__ == "__main__":
