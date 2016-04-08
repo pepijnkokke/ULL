@@ -6,7 +6,6 @@ from copy        import copy
 from cPickle     import dump, load
 from os.path     import exists
 
-
 # w         : input word
 # l         : lexical item
 # n         : number of previously generated words
@@ -23,6 +22,7 @@ from os.path     import exists
 
 
 FILENAME = 'boundaries.pickle'
+FILENAME_EVAL = 'eval.pickle'
 
 
 class Corpus:
@@ -84,22 +84,39 @@ def list_or(xs, ys):
     return [1 if x == 1 or y == 1 else 0 for x, y in zip(xs, ys)]
 
 
-def evaluate(segmented_found,segmented_true,lexicon_found,lexicon_true):
+def evaluate(corpus_found, corpus_true):
     """ Evaluate precision, recall and F0 for:
         - Words (word boundaries placed correctly before and after the word)
         - Lexical (lexical types found)
-        - Boundaries (rather than looking at words, look at just the boundary positions excluding the utterance boundaries, as they are already correct)
+        - Possibly Ambiguous Boundaries (rather than looking at words, look at just the boundary positions excluding the utterance boundaries, as they are already correct)
+        Note that these are exactly the evaluations as done by Goldwater & friends
+        corpus_found : the corpus we arrived at after Gibbs sampling
+        corpus_true  : the correctly segmented corpus we received
     """
-    #Note: these are exactly the evaluations as done by Goldwater & friends
-    #words_found = #something with segmented_found
-    #words_true = #something with segmented_true
-    #P,R = precision_recall(words_found,words_true)
-    #F = f_zero(P,R)
-    LP,LR = precision_recall(lexicon_found,lexicon_true)
-    LF = f_zero(LP/LR)
-    #BP,BR =
-    #BF = f_zero(BP,BR)
-
+    #Note: currently only the boundaries return non-zero values. Words and lexical types still wonkling
+    
+    boundaries_found = list_or(corpus_found.utt_boundaries, corpus_found.boundaries)
+    boundaries_true = list_or(corpus_true.utt_boundaries, corpus_true.boundaries)
+    
+    #Words
+    words_found = get_words(corpus_found.text, boundaries_found)
+    words_true = get_words(corpus_true.text, boundaries_true)
+    P,R = precision_recall(words_found,words_true)
+    F = f_zero(P,R)
+    
+    #Lexical types #Note: it's possible these should just be the second column in dict.txt
+    lexical_found = set(get_words(corpus_found.text,boundaries_found))
+    lexical_true = set(get_words(corpus_true.text,boundaries_true))
+    LP,LR = precision_recall(lexical_found,lexical_true)
+    LF = f_zero(LP,LR)
+    
+    #Possibly Ambiguous Boundaries
+    BP,BR = precision_recall(corpus_found.boundaries, corpus_true.boundaries) #Note: utterance boundaries are ignored as they are unambiguous
+    BF = f_zero(BP,BR)
+    
+    #How do you like my string boyz
+    return "P: " + str(P) + "\nR: " + str(R) + "\nF: " + str(F) + "\nLP: " + str(LP) + "\nLR: " + str(LR) + "\nLF: " + str(LF) + "\nBP: " + str(BP) + "\nBR: " + str(BR) + "\nBF: " + str(BF)
+    
 def precision_recall(found_items,true_items):
     """ Number of correct / number found """
     c = 0
@@ -114,7 +131,11 @@ def precision_recall(found_items,true_items):
 
 def f_zero(precision,recall):
     """ Geometric average of precision and recall """
-    return (2*precision*recall)/(precision+recall)
+    denom = precision+recall
+    if denom == 0: #Note: yes, if precision+recall can be zero something's not working right
+        return 0
+    else:
+        return (2*precision*recall)/denom
 
 
 def find_enclosing_boundaries(boundaries, i):
@@ -197,6 +218,16 @@ def main():
     with open(FILENAME, 'wb') as f:
         print 'Saving data to {}'.format(FILENAME)
         dump(corpus.boundaries, f)
+        
+    #Evaluation (if true corpus is provided)
+    if len(argv) > 3:
+    
+        corpus_true = Corpus(argv[3])
+        eval = evaluate(corpus, corpus_true)
+        
+        with open(FILENAME_EVAL, 'wb') as f_eval:
+            print 'Saving evaluation data to {}'.format(FILENAME_EVAL)
+            dump(eval,f_eval)
 
 
 if __name__ == "__main__":
