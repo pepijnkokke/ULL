@@ -37,10 +37,8 @@ class Corpus:
                 self.text += uttr
                 uttr_bound_pos.append(uttr_bound_pos[-1] + len(uttr))
 
-        uttr_bounds = BitArray(length=len(self.corpus + 1))
-        uttr_bounds.setall(0)
-        word_bounds = BitArray(length=len(self.corpus + 1))
-        word_bounds.setall(0)
+        uttr_bounds = BitArray(length=len(self.text) + 1)
+        word_bounds = BitArray(length=len(self.text) + 1)
 
         for pos in uttr_bound_pos:
             uttr_bounds.set(1,pos)
@@ -107,6 +105,10 @@ def f_zero(precision,recall):
 
 def find_enclosing_bounds(bounds, i):
     """ Find the nearest bounds on both sides of i """
+
+    # can do this using bs.find and bs.rfind, not sure if
+    # that would give any speed increase but whatever
+
     lower = i - 1
     while bounds[lower] != 1:
         lower -= 1
@@ -126,23 +128,23 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
         # we COULD _||_ them all together here, but simply checking both arrays
         # is probably faster
-        bounds = list_or(corpus.uttr_bounds, corpus.word_bounds)
+        bounds       = corpus.uttr_bounds | corpus.word_bounds
         lower, upper = find_enclosing_bounds(bounds, i)
-        w1 = corpus.text[lower:upper]
-        w2 = corpus.text[lower:i]
-        w3 = corpus.text[i:upper]
+        w1           = corpus.text[lower:upper]
+        w2           = corpus.text[lower:i]
+        w3           = corpus.text[i:upper]
 
-        h_ = corpus.text[:lower] + corpus.text[upper:]
-        h_bounds = bounds[:lower] + bounds[upper:]
+        h_            = corpus.text[:lower]        + corpus.text[upper:]
+        h_bounds      = bounds[:lower]             + bounds[upper:]
         h_uttr_bounds = corpus.uttr_bounds[:lower] + corpus.uttr_bounds[upper:]
 
         h_words = get_words(h_, h_bounds)
-        n_ = len(h_words) # TODO: number of words or number of unique words?
+        n_      = len(h_words) # TODO: number of words or number of unique words?
 
-        bounds[i] = 0
+        bounds.set(0,i)
 
         n_dollar = h_uttr_bounds.count(1) - 1
-        nu = n_dollar if corpus.uttr_bounds[upper] == 1 else n_ - n_dollar
+        nu       = n_dollar if corpus.uttr_bounds[upper] == 1 else n_ - n_dollar
 
         p_h1_factor1 = (h_words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
 
