@@ -1,10 +1,11 @@
-from sys         import argv
-from collections import namedtuple
-from operator    import mul
-from random      import random
-from copy        import copy
-from cPickle     import dump, load
-from os.path     import exists
+from sys          import argv
+from collections  import Counter
+from operator     import mul
+from random       import random
+from copy         import copy
+from cPickle      import dump, load
+from os.path      import exists
+from progress.bar import Bar
 
 # w         : input word
 # l         : lexical item
@@ -154,7 +155,9 @@ def find_enclosing_boundaries(boundaries, i):
 def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
     boundaries = list_or(corpus.utt_boundaries, corpus.boundaries)
     words = get_words(corpus.text, boundaries)
+    word_counts = Counter(words)
 
+    bar = Bar('Evaluating boundaries', max=len(corpus.text))
     for i, phoneme in enumerate(corpus.text):
         # utterance boundaries are unambiguous
         if corpus.utt_boundaries[i] == 1:
@@ -176,19 +179,19 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
         nu = n_dollar if corpus.utt_boundaries[upper] == 1 else n_ - n_dollar
 
         if boundaries[i] == 0:
-            p_h1_factor1 = (words.count(w1) - 1 + alpha * corpus.p0(w1)) / (n_ + alpha)
+            p_h1_factor1 = (word_counts[w1] - 1 + alpha * corpus.p0(w1)) / (n_ + alpha)
         else:
-            p_h1_factor1 = (words.count(w1) + alpha * corpus.p0(w1)) / (n_ + alpha)
+            p_h1_factor1 = (word_counts[w1] + alpha * corpus.p0(w1)) / (n_ + alpha)
 
         p_h1_factor2 = (nu + rho/2) / (n_ + rho)
 
         if boundaries[i] == 0:
-            p_h2_factor1 = (words.count(w2) + alpha * corpus.p0(w2)) / (n_ + alpha)
-            p_h2_factor3 = ((words.count(w3) + 1 if w2 == w3 else 0 + alpha *
+            p_h2_factor1 = (word_counts[w2] + alpha * corpus.p0(w2)) / (n_ + alpha)
+            p_h2_factor3 = ((word_counts[w3] + 1 if w2 == w3 else 0 + alpha *
                              corpus.p0(w3)) / (n_ + 1 + alpha))
         else:
-            p_h2_factor1 = (words.count(w2) - 1 + alpha * corpus.p0(w2)) / (n_ + alpha)
-            p_h2_factor3 = ((words.count(w3) -1 + 1 if w2 == w3 else 0 + alpha *
+            p_h2_factor1 = (word_counts[w2] - 1 + alpha * corpus.p0(w2)) / (n_ + alpha)
+            p_h2_factor3 = ((word_counts[w3] -1 + 1 if w2 == w3 else 0 + alpha *
                              corpus.p0(w3)) / (n_ + 1 + alpha))
 
         p_h2_factor2 = (n_ - n_dollar + rho/2) / (n_ + rho)
@@ -200,6 +203,9 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
         if p_h2 > p_h1:
             corpus.boundaries[i] = 1
 
+        bar.next()
+
+    bar.finish()
 
 def main():
     corpus = Corpus(argv[1])
