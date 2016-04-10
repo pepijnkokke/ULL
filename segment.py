@@ -222,9 +222,9 @@ def main():
         print i
         gibbs_iteration(corpus)
 
-    with open(FILENAME, 'wb') as f:
-        print 'Saving data to {}'.format(FILENAME)
-        dump(corpus.boundaries, f)
+        with open(FILENAME, 'wb') as f:
+            print 'Saving data to {}'.format(FILENAME)
+            dump(corpus.boundaries, f)
         
     #Evaluation (if true corpus is provided)
     if len(argv) > 3:
