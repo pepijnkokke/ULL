@@ -161,6 +161,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
     for i, phoneme in enumerate(corpus.text):
         # utterance boundaries are unambiguous
         if corpus.utt_boundaries[i] == 1:
+            bar.next()
             continue
 
         lower, upper = find_enclosing_boundaries(boundaries, i)
