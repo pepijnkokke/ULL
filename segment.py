@@ -227,9 +227,9 @@ def main():
             corpus.boundaries = pool(delayed(gibbs_iteration)(corpus, boundaries, n, word_counts, i)
                                      for i in range(len(corpus.text)))
 
-    with open(FILENAME, 'wb') as f:
-        print 'Saving data to {}'.format(FILENAME)
-        dump(corpus.boundaries, f)
+        with open(FILENAME, 'wb') as f:
+            print 'Saving data to {}'.format(FILENAME)
+            dump(corpus.boundaries, f)
         
     #Evaluation (if true corpus is provided)
     if len(argv) > 3:
