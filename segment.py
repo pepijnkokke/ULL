@@ -203,6 +203,8 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
         if p_h2 > p_h1:
             corpus.boundaries[i] = 1
+        else:
+            corpus.boundaries[i] = 0
 
         bar.next()
 
