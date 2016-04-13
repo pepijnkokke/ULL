@@ -120,7 +120,6 @@ void gibbs_iteration(Corpus &corpus, double rho=2.0, double alpha=0.5)
     vector<string> words = corpus.get_words();
     map<string, int> word_counts = histogram(words);
 
-    #pragma omp parallel for
     for (int i = 0; i < corpus.text.size(); ++i) {
         char phoneme = corpus.text[i];
 
