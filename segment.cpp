@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -8,6 +9,9 @@
 #include <vector>
 #include <map>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/program_options.hpp>
+
+namespace po = boost::program_options;
 
 using namespace std;
 using namespace boost;
@@ -19,10 +23,21 @@ public:
     dynamic_bitset<> boundaries;
     map<char, double> p_phonemes;
 
-    Corpus(const char *path)
+    Corpus(string path)
     {
-        load_file(path);
+        load_file({path});
         compute_p_phonemes();
+    }
+
+    Corpus(string path, string trained_path,
+           dynamic_bitset<> &trained_boundaries)
+    {
+        load_file({path, trained_path});
+        compute_p_phonemes();
+
+        // set the trained boundaries as unchangable utterance boundaries
+        trained_boundaries.resize(text.size() + 1, false);
+        utt_boundaries |= trained_boundaries;
     }
 
     double p0(string word, double p_hash=0.5)
@@ -50,19 +65,23 @@ public:
     }
 
 private:
-    void load_file(const char *path)
+    virtual void load_file(const vector<string> &paths)
     {
-        fstream in(path);
         string line;
         stringstream text_stream;
         vector<int> utt_indices = {0};
 
-        while (getline(in, line)) {
-            text_stream << line;
-            utt_indices.push_back(utt_indices.back() + line.size());
-        }
+        for (string path : paths) {
+            fstream in(path);
 
-        in.close();
+            while (getline(in, line)) {
+                text_stream << line;
+                utt_indices.push_back(utt_indices.back() + line.size());
+            }
+
+            in.close();
+        }
+        
 
         text = text_stream.str();
 
@@ -114,7 +133,8 @@ void find_enclosing_boundaries(dynamic_bitset<> bounds, int i,
         *upper += 1;
 }
 
-void gibbs_iteration(Corpus &corpus, double rho=2.0, double alpha=0.5)
+void gibbs_iteration(Corpus &corpus, double rho=2.0, double alpha=0.5,
+                     double p_hash=0.5)
 {
     dynamic_bitset<> bounds = corpus.utt_boundaries | corpus.boundaries;
     vector<string> words = corpus.get_words();
@@ -144,21 +164,21 @@ void gibbs_iteration(Corpus &corpus, double rho=2.0, double alpha=0.5)
 
         double p_h1_factor1;
         if (!bounds[i])
-            p_h1_factor1 = (word_counts[w1] - 1 + alpha * corpus.p0(w1)) / (n_ + alpha);
+            p_h1_factor1 = (word_counts[w1] - 1 + alpha * corpus.p0(w1, p_hash)) / (n_ + alpha);
         else
-            p_h1_factor1 = (word_counts[w1] + alpha * corpus.p0(w1)) / (n_ + alpha);
+            p_h1_factor1 = (word_counts[w1] + alpha * corpus.p0(w1, p_hash)) / (n_ + alpha);
 
         double p_h1_factor2 = (nu + rho/2) / (n_ + rho);
 
         double p_h2_factor1, p_h2_factor3;
         if (!bounds[i]) {
-            p_h2_factor1 = (word_counts[w2] + alpha * corpus.p0(w2)) / (n_ + alpha);
+            p_h2_factor1 = (word_counts[w2] + alpha * corpus.p0(w2, p_hash)) / (n_ + alpha);
             p_h2_factor3 = ((word_counts[w3] + (w2 == w3 ? 1 : 0) + alpha *
-                             corpus.p0(w3)) / (n_ + 1 + alpha));
+                             corpus.p0(w3, p_hash)) / (n_ + 1 + alpha));
         } else {
-            p_h2_factor1 = (word_counts[w2] - 1 + alpha * corpus.p0(w2)) / (n_ + alpha);
+            p_h2_factor1 = (word_counts[w2] - 1 + alpha * corpus.p0(w2, p_hash)) / (n_ + alpha);
             p_h2_factor3 = ((word_counts[w3] - 1 + (w2 == w3 ? 1 : 0) + alpha *
-                             corpus.p0(w3)) / (n_ + 1 + alpha));
+                             corpus.p0(w3, p_hash)) / (n_ + 1 + alpha));
         }
 
         double p_h2_factor2 = (n_ - n_dollar + rho/2) / (n_ + rho);
@@ -174,7 +194,7 @@ void gibbs_iteration(Corpus &corpus, double rho=2.0, double alpha=0.5)
     }
 }
 
-void write_boundaries(const Corpus &corpus, const char *filename)
+void write_boundaries(const Corpus &corpus, string filename)
 {
     ofstream out(filename);
     out << "[";
@@ -189,19 +209,65 @@ void write_boundaries(const Corpus &corpus, const char *filename)
     out.close();
 }
 
+dynamic_bitset<> read_boundaries(string path)
+{
+    fstream in(path);
+    string line;
+    getline(in, line);
+    in.close();
+
+    auto end_iter = remove_if(line.begin(), line.end(),
+                              [](char ch) {return !(ch == '1' || ch == '0');});
+    line.erase(end_iter, line.end());
+
+    return dynamic_bitset<>(line);
+}
+
 int main(int argc, char *argv[])
 {
-    Corpus corpus(argv[1]);
+    string out_path;
+    string train_path;
+    string test_path;
+    string boundaries;
+    int n;
+    double alpha;
+    double p_hash;
+    po::options_description desc("Usage");
+    desc.add_options()
+        (",n", po::value<int>(&n), "number of iterations")
+        ("alpha,a", po::value<double>(&alpha)->default_value(0.5), "alpha parameter")
+        ("p_hash,ph", po::value<double>(&p_hash)->default_value(0.5), "p# parameter")
+        ("out_path", po::value<string>(&out_path), "path to write output to")
+        ("train_path", po::value<string>(&train_path), "path to load training data")
+        ("test_path", po::value<string>(&test_path), "path to load test data")
+        ("test", "apply a learned model to test data (requires test_path and boundaries)")
+        ("help", "print usage information")
+        ("boundaries", po::value<string>(&boundaries), "path to a learned set of boundaries");
 
-    int n = stoi(argv[2]);
-    for (int i = 0; i < n; ++i) {
-        cout << "Iteration " << i << endl;
-        gibbs_iteration(corpus);
+    po::variables_map opts;
+    po::store(po::parse_command_line(argc, argv, desc), opts);
+    po::notify(opts);
+
+    if (opts.count("help")) {
+        cout << desc << endl;
+        return 0;
     }
 
-    write_boundaries(corpus, "boundaries.txt");
-    for (auto &word : corpus.get_words())
-        cout << word << endl;
+    Corpus *corpus;
+    if (opts.count("test")) {
+        cout << "Testing" << endl;
+        auto bounds = read_boundaries(boundaries);
+        corpus = new Corpus(train_path, test_path, bounds);
+    } else {
+        corpus = new Corpus(train_path);
+    }
+
+    for (int i = 0; i < n; ++i) {
+        cout << "Iteration " << i << endl;
+        gibbs_iteration(*corpus, 2, alpha, p_hash);
+    }
+
+    write_boundaries(*corpus, out_path);
 
     return 0;
 }

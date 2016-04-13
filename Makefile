@@ -1,2 +1,5 @@
+LDFLAGS=-lboost_program_options
+CFLAGS=-std=c++11 -O3
+
 segment: segment.cpp
-	g++ -std=c++11 -O3 segment.cpp -o segment
+	g++ $(CFLAGS) segment.cpp -o segment $(LDFLAGS)
