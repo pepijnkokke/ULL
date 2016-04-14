@@ -15,11 +15,6 @@ fi
 
 for P_HASH in $P_HASHES; do
     for ALPHA in $ALPHAS; do
-        ./segment
-          --out_dir $DIR
-          --train_path data/br-$DATASET-train-raw.txt
-          -a $ALPHA
-          -p $P_HASH
-          -n $NS
+        ./segment --out_dir $DIR --train_path data/br-$DATASET-train-raw.txt -a $ALPHA -p $P_HASH -n $NS
     done &
 done
