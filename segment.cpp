@@ -81,7 +81,7 @@ private:
 
             in.close();
         }
-        
+
 
         text = text_stream.str();
 
@@ -158,7 +158,7 @@ void gibbs_iteration(Corpus &corpus, double rho=2.0, double alpha=0.5,
             n_ = words.size();
         else
             n_ = words.size() - 1;
-        
+
         double n_dollar = corpus.utt_boundaries.count() - 1;
         double nu = corpus.utt_boundaries[upper] ? n_dollar : n_ - n_dollar;
 
@@ -189,7 +189,7 @@ void gibbs_iteration(Corpus &corpus, double rho=2.0, double alpha=0.5,
 
         if (p_h2 > p_h1)
             corpus.boundaries[i] = 1;
-        else 
+        else
             corpus.boundaries[i] = 0;
     }
 }
@@ -204,7 +204,7 @@ void write_boundaries(const Corpus &corpus, string filename)
             out << ", ";
         out << corpus.boundaries[i];
     }
-    
+
     out << "]";
     out.close();
 }
@@ -229,7 +229,7 @@ string generate_filepath(const string &out_dir, double alpha, double p_hash, int
     s << out_dir << "/";
     if (i >= 0)
         s << "iter_" << i << "_";
-    s << alpha << "_" << p_hash << ".txt" << endl;
+    s << alpha << "_" << p_hash << ".txt";
 
     return s.str();
 }
