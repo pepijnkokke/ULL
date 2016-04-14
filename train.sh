@@ -2,6 +2,7 @@
 
 ALPHA=${ALPHA:-0.5}
 P_HASH=${P_HASH:-0.5}
+OUT_DIR=${OUT_DIR:-"model"}
 
 if ([[ $1 = 'phono' ]] || [[ $1 == 'text' ]]) && [[ -n $2 ]]
 then
@@ -12,4 +13,4 @@ else
     exit -1
 fi
 
-./segment --out_path "${DATASET}_train_${ALPHA}_${P_HASH}.txt" --train_path data/br-$DATASET-train-raw.txt -n $N -a $ALPHA -p $P_HASH
+./segment --out_dir "$OUT_DIR" --train_path "data/br-$DATASET-train-raw.txt" -n $N -a $ALPHA -p $P_HASH
