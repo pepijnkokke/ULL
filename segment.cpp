@@ -223,26 +223,38 @@ dynamic_bitset<> read_boundaries(string path)
     return dynamic_bitset<>(line);
 }
 
+string generate_filepath(const string &out_dir, double alpha, double p_hash, int i=-1)
+{
+    stringstream s;
+    s << out_dir << "/";
+    if (i >= 0)
+        s << "iter_" << i << "_";
+    s << alpha << "_" << p_hash << ".txt" << endl;
+
+    return s.str();
+}
+
 int main(int argc, char *argv[])
 {
-    string out_path;
+    string out_dir;
     string train_path;
     string test_path;
     string boundaries;
-    int n;
     double alpha;
     double p_hash;
+    vector<int> eval_points;
+
     po::options_description desc("Usage");
     desc.add_options()
-        (",n", po::value<int>(&n), "number of iterations")
         ("alpha,a", po::value<double>(&alpha)->default_value(0.5), "alpha parameter")
         ("p_hash,ph", po::value<double>(&p_hash)->default_value(0.5), "p# parameter")
-        ("out_path", po::value<string>(&out_path), "path to write output to")
+        ("out_dir", po::value<string>(&out_dir), "path to write output to")
         ("train_path", po::value<string>(&train_path), "path to load training data")
         ("test_path", po::value<string>(&test_path), "path to load test data")
         ("test", "apply a learned model to test data (requires test_path and boundaries)")
         ("help", "print usage information")
-        ("boundaries", po::value<string>(&boundaries), "path to a learned set of boundaries");
+        ("boundaries", po::value<string>(&boundaries), "path to a learned set of boundaries")
+        (",n", po::value<vector<int> >(&eval_points)->multitoken(), "points to evaluate");
 
     po::variables_map opts;
     po::store(po::parse_command_line(argc, argv, desc), opts);
@@ -253,6 +265,8 @@ int main(int argc, char *argv[])
         return 0;
     }
 
+    string out_path = generate_filepath(out_dir, alpha, p_hash);
+
     Corpus *corpus;
     if (opts.count("test")) {
         cout << "Testing" << endl;
@@ -262,9 +276,17 @@ int main(int argc, char *argv[])
         corpus = new Corpus(train_path);
     }
 
-    for (int i = 0; i < n; ++i) {
+    // calculate the maximum iteration
+    int i_max = *max_element(eval_points.begin(), eval_points.end());
+
+    for (int i = 0; i < i_max; ++i) {
         cout << "Iteration " << i << endl;
         gibbs_iteration(*corpus, 2, alpha, p_hash);
+
+        if (find(eval_points.begin(), eval_points.end(), i) != eval_points.end()) {
+            string iterpath = generate_filepath(out_dir, alpha, p_hash, i);
+            write_boundaries(*corpus, iterpath);
+        }
     }
 
     write_boundaries(*corpus, out_path);
