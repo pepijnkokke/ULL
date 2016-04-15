@@ -5,6 +5,7 @@ from random       import random
 from copy         import copy
 from cPickle      import dump, load
 from os.path      import exists
+from json         import load
 from progress.bar import Bar
 
 # w         : input word
@@ -50,16 +51,6 @@ class Corpus:
         self.pPhonemes = {}
         for phoneme in set(self.text):
             self.pPhonemes[phoneme] = float(self.text.count(phoneme)) / len(self.text)
-
-    def numWords(self):
-        """ Compute the number of words in the corpus. """
-        # NOTE: I have the expectation that this will be more or less O(1)
-        pass
-
-    def countWord(self, word):
-        """ Compute the number of times that a lexical item occurs. """
-        # NOTE: I have the expectation that this will be more or less O(1)
-        pass
 
     def pPhoneme(self, phon):
         """ Compute the prior probability of a phoneme. """
@@ -108,29 +99,29 @@ def evaluate(corpus_found, corpus_true):
         corpus_true  : the correctly segmented corpus we received
     """
     #Note: currently only the boundaries return non-zero values. Words and lexical types still wonkling
-    
+
     boundaries_found = list_or(corpus_found.utt_boundaries, corpus_found.boundaries)
     boundaries_true = list_or(corpus_true.utt_boundaries, corpus_true.boundaries)
-    
+
     #Words
     words_found = get_words(corpus_found.text, boundaries_found)
     words_true = get_words(corpus_true.text, boundaries_true)
     P,R = precision_recall(words_found,words_true)
     F = f_zero(P,R)
-    
+
     #Lexical types #Note: it's possible these should just be the second column in dict.txt
     lexical_found = set(get_words(corpus_found.text,boundaries_found))
     lexical_true = set(get_words(corpus_true.text,boundaries_true))
     LP,LR = precision_recall(lexical_found,lexical_true)
     LF = f_zero(LP,LR)
-    
+
     #Possibly Ambiguous Boundaries
     BP,BR = precision_recall(corpus_found.boundaries, corpus_true.boundaries) #Note: utterance boundaries are ignored as they are unambiguous
     BF = f_zero(BP,BR)
-    
+
     #How do you like my string boyz
     return "P: " + str(P) + "\nR: " + str(R) + "\nF: " + str(F) + "\nLP: " + str(LP) + "\nLR: " + str(LR) + "\nLF: " + str(LF) + "\nBP: " + str(BP) + "\nBR: " + str(BR) + "\nBF: " + str(BF)
-    
+
 def precision_recall(found_items,true_items):
     """ Number of correct / number found """
     c = 0
@@ -223,6 +214,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
     bar.finish()
 
+
 def main():
     corpus = Corpus(argv[1])
 
@@ -240,17 +232,18 @@ def main():
         with open(FILENAME, 'wb') as f:
             print 'Saving data to {}'.format(FILENAME)
             dump(corpus.boundaries, f)
-        
+
     #Evaluation (if true corpus is provided)
     if len(argv) > 3:
-    
+
         corpus_true = Corpus(argv[3])
         eval = evaluate(corpus, corpus_true)
-        
+
         with open(FILENAME_EVAL, 'wb') as f_eval:
             print 'Saving evaluation data to {}'.format(FILENAME_EVAL)
             dump(eval,f_eval)
 
 
 if __name__ == "__main__":
-    main()
+    with open("model/iter_7500_3000_0.2.txt",'r') as f:
+        corpus = Corpus()
