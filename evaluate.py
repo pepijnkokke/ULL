@@ -16,6 +16,16 @@ def precision_recall_f1(trained, reference):
     return precision, recall, f
 
 
+def lexicon_precision_recall(trained_words, reference_words):
+    correct = len([w for w in trained_words if w in reference_words])
+
+    precision = float(correct) / len(trained_words)
+    recall = float(correct) / len(reference_words)
+    f = 2 * ((precision * recall) / (precision + recall))
+
+    return precision, recall, f
+
+
 raw_data = sys.argv[1]
 reference_data = sys.argv[2]
 
@@ -43,4 +53,12 @@ for i, ch in enumerate(reference_text):
         n_bounds += 1
 
 p, r, f = precision_recall_f1(test_boundaries, reference_boundaries)
+print 'Ambiguous boundaries:'
+print 'Precision:\t{:.2f}\nRecall:\t\t{:.2f}\nF1:\t\t{:.2f}'.format(p, r, f)
+
+trained_words = get_words(corpus.text, list_or(corpus.utt_boundaries, test_boundaries))
+reference_words = reference_text.replace('\n', ' ').split(' ')
+
+p, r, f = lexicon_precision_recall(trained_words, reference_words)
+print 'Lexicon:'
 print 'Precision:\t{:.2f}\nRecall:\t\t{:.2f}\nF1:\t\t{:.2f}'.format(p, r, f)
