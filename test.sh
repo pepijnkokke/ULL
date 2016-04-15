@@ -13,3 +13,10 @@ else
 fi
 
 ./segment --out_path "${DATASET}_test_${ALPHA}_${P_HASH}.txt"  --train_path data/br-$DATASET-train-raw.txt -n $N --test --test_path data/br-$DATASET-test-raw.txt --boundaries "${DATASET}_test_${ALPHA}_${P_HASH}.txt" -a $ALPHA -p $P_HASH
+
+            #./segment --test \
+            #          --out_path "${OUT_DIR}/test_${N}_${ALPHA}_${P_HASH}.txt" \
+            #          --train_path data/br-$DATASET-train-raw.txt \
+            #          --test_path data/br-$DATASET-test-raw.txt \
+            #          --boundaries "${OUT_DIR}/test_${N}_${ALPHA}_${P_HASH}.txt" \
+            #          -n 100 -a $ALPHA -p $P_HASH
