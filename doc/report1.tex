@@ -11,31 +11,42 @@
 \author{Maarten de Jonge \and Pepijn Kokke \and Edwin Odijk}
 \date{}
 
+%NOTE: the report has a page requirement of 7-8 pages. It sounds more like a guideline though, because the TAs seem like decent people.
+%literal copypasta from the ULL page: "The report for the first assignment on Bayesian methods should be short (7-8 pages)."
+
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-blep
+%Probably best to save this for last.
+% - why would we do word segmenation
+% - where did we get it from (Goldman)
+% - what do we do (model based on MBDP-1, unigram, gibbs sampling
+% - how did we implement it (any noteworthy things about it)
+% - experiments
+% - results
+% - conclusion
 \end{abstract}
 
 \section{Introduction}
+%Intro looks done-ish? There's still a couple of refs in here that I didn't bother fixing right away. It's (REF.GOLDMAN) right now.
+%If we want to pad here, we can just repeat some of the stuff from the Method section
+As we grow up, we quickly pick up the language spoken in our direct environment. Not only as infants, but also in our later lives can we learn different languages. Doing so is not trivial, however, and one of the problems we have to overcome is that of discerning the individual words from a spoken sentence. We may be able to do so easily once we have a grasp of the language, but any exposure to a foreign language quickly reveals how difficult this task can be. Yet, despite this hurdle, even infants manage to eventually do so. A paper by (REF.GOLDMAN) investigates a statistical model that may explain how humans are able to eventually perform this task of word segmentation by observing a lot of data. In this report, we implemented their model, and although (REF.GOLDMAN) focuses on the effects of assuming words are independent or predictive (i.e. a word may predict what other words will occur in the sentence or are completely unrelated), we implemented the model only under the independence assumption. As we follow the work of (REF.GOLDMAN), we also apply it in the context of infant language learning. Word segmentation is not limited to this application, though, and can have other uses such as aiding in the transcription of aural data.
 
 \section{Method}
+%Following the Goldman content order, we could explain:
+% - Bayesian vs Maximum Likelihood learning, and why Bayesian is the way to go here
+% - explain MBDP-1 model, on which this model is based
+% - unigram model (independence assumption) and hypothesize how it will intuitively be worse than a predictive model
+% - Gibbs Sampling
+%Note: could mention the parallel nature of Gibbs Sampling iterations and the use of multithread there in like a sentence just to show we understand their jam
 
-\section{Empirical evaluation}
+\section{Experiments}
+% parameter settings
 
-\section{Task and data}
-
-\section{Model selection and parameters}
-
-\section{Results and discussion}
-
-\section{Qualitative evaluation}
-% (e.g., some visualization of the model)
-
-\section{Related work}
-% (when possible)
+\section{Results}
+% we should likely encounter undersegmentation
 
 \section{Conclusion}
 
