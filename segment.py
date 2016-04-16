@@ -224,6 +224,8 @@ def main():
 
         corpus.boundaries = boundaries
 
+    # run the specified number of iterations of Gibbs sampling, saving the
+    # output after each iteration
     for i in range(int(argv[2])):
         print i
         gibbs_iteration(corpus)
