@@ -59,6 +59,6 @@ print 'Precision:\t{:.2f}\nRecall:\t\t{:.2f}\nF1:\t\t{:.2f}'.format(p, r, f)
 trained_words = get_words(corpus.text, list_or(corpus.utt_boundaries, test_boundaries))
 reference_words = reference_text.replace('\n', ' ').split(' ')
 
-p, r, f = lexicon_precision_recall(trained_words, reference_words)
+p, r, f = lexicon_precision_recall(set(trained_words), set(reference_words))
 print 'Lexicon:'
 print 'Precision:\t{:.2f}\nRecall:\t\t{:.2f}\nF1:\t\t{:.2f}'.format(p, r, f)

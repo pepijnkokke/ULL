@@ -16,11 +16,11 @@ fi
 for P_HASH in $P_HASHES; do
     for ALPHA in $ALPHAS; do
         for N in $NS; do
-            echo "${OUT_DIR}/train_${N}_${ALPHA}_${P_HASH}.txt"
+            echo "${OUT_DIR}/${N}_${ALPHA}_${P_HASH}.txt"
             python evaluate.py \
                    "data/br-${DATASET}-train-raw.txt" \
                    "data/br-${DATASET}-train.txt" \
-                   "${OUT_DIR}/train_${N}_${ALPHA}_${P_HASH}.txt"
+                   "${OUT_DIR}/${N}_${ALPHA}_${P_HASH}.txt"
         done
     done
 done
