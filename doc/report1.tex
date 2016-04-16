@@ -1,13 +1,17 @@
 \documentclass[11pt]{article}
 
-\usepackage{acl2016}
+% The algorithm looks way better with the default wider layout (the default
+% layout also leads to more pages)
+%\usepackage{acl2016}
 \usepackage{times}
 \usepackage{url}
 \usepackage{latexsym}
 \usepackage{amsmath,amssymb}
-\aclfinalcopy
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+%\aclfinalcopy
 
-\title{ULL -- Project 1}
+\title{Unsupervised Word Segmentation}
 \author{Maarten de Jonge \and Pepijn Kokke \and Edwin Odijk}
 \date{}
 
@@ -47,6 +51,90 @@ As we grow up, we quickly pick up the language spoken in our direct environment.
 
 \section{Results}
 % we should likely encounter undersegmentation
+
+\section{Method}
+Blah blah some theory on the statistical model here.
+
+Inference is done by calculating the probabilities of two hypotheses $h_1$ and
+$h_2$ at a potential boundary, where $h_1$ corresponds to not placing a
+boundary there and $h_2$ corresponds to the contrary.
+They are calculated as
+\begin{align}
+  P(h_1 | h^-) =& \frac{n_{w1}^{(h^-)} + \alpha_0 P_0(w1)}{n^- + \alpha_0} \cdot
+                 \frac{n_u^{(h^-)} + \frac{\rho}{2}}{n^- + \rho}
+                  \label{eq:h1} \\
+  \begin{split}
+  P(h_2 | h^-) =& \frac{n_{w2}^{(h^-)} + \alpha_0 P_0(w2)}{n^- + \alpha_0}
+                  \cdot \frac{n^- - n_\$^{(h^-)} + \frac{\rho}{2}}{n^- + \rho} \\
+                & \cdot \frac{n_{w3}^{(h^-)} + I(w2 = w3) + \alpha_0 P_0(w3)}{n^-
+                  + 1 + \alpha_0} \\
+                & \cdot \frac{n_u^{(h^-)} + I(w2 = w3) + \frac{\rho}{2}}{n^- + 1 + \rho}
+                \label{eq:h2}
+  \end{split}
+\end{align}
+where $w1$ refers to the word around the currently considered boundary location
+if we do not place a boundary, while $w2$ and $w3$ refer to the words around the
+boundary if the boundary does get placed. The rest of the corpus outside of the
+area spanned by $w1$ is referred to as $h^-$. The number of words in $h^-$ is
+$n^-$, and $n_{wx}^{(h^-)}$ is the number of occurrences of word x in $h^-$.
+$n_u^{(h^-)}$ is the number of utterance boundaries in $h^-$ if the word is at
+the end of an utterance, or $n^-$ minus the number of utterances boundaries if
+it is not. $I(w2 = w3)$ is an indicator function returning 1 if $w2$ and $w3$
+are equal and 0 otherwise. $\alpha$ and $\rho$ are model parameters.
+
+$P_0$ is a prior probability distribution defined over a word $w$ consisting of
+phonemes $x_1, \dots, x_M$ as
+\begin{align}
+  P_0(w) = p_\# (1 - p_\#)^{M-1} \prod_{j=1}^M P(x_i)
+\end{align}
+where $P(x_i)$ is a prior over phonemes which define as the relative frequency
+of the $x_i$ in the corpus (i.e. the count of $x_i$ divided by the size of the corpus).
+
+The full algorithm is given in Algorithm \ref{algo:gibbs}.
+
+\begin{algorithm}
+    \begin{algorithmic}
+    \Function{Gibbs\_Iteration}{corpus, boundaries, $\rho$, $\alpha_0$, $p_\#$}
+        \For{$i \in$ $[0, |corpus|)$}
+        \If{$i$ is an utterance boundary}
+            \State continue \Comment{utterance boundaries are given and static}
+        \EndIf
+        \State $lower, upper \gets $ the enclosing boundaries around $i$
+        \State $w1 \gets corpus[lower:upper]$ \Comment{slice of phonemes}
+        \State $w2 \gets corpus[lower:i]$
+        \State $w3 \gets corpus[i:upper]$
+        \State $h^{-} \gets corpus[0:lower] + corpus[upper:end]$ \Comment{append
+        the strings}
+        \State
+        \State calculate $P(h_1 | h^-)$ and $P(h_2 | h^-)$ according to
+               Equations \ref{eq:h1} and \ref{eq:h2}
+        \State
+        \If{$P(h_2 | h^-) > P(h_1 | h^-)$}
+          \State boundaries[i] = True
+        \Else
+          \State boundaries[i] = False
+        \EndIf
+        \EndFor
+        \Return boundaries
+    \EndFunction
+    \end{algorithmic}
+    \caption{The Gibbs sampling algorithm}
+    \label{algo:gibbs}
+\end{algorithm}
+
+\section{Empirical evaluation}
+
+\section{Task and data}
+
+\section{Model selection and parameters}
+
+\section{Results and discussion}
+
+\section{Qualitative evaluation}
+% (e.g., some visualization of the model)
+
+\section{Related work}
+% (when possible)
 
 \section{Conclusion}
 
