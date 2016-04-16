@@ -71,19 +71,6 @@ def get_words(text, boundaries):
 
     return [''.join(word) for word in out]
 
-def get_utterances(text, boundaries, utt_boundaries):
-    out = []
-    for phoneme, bound, utt_bound in zip(text, boundaries, utt_boundaries):
-        if utt_bound == 1:
-            out.append([])
-
-        if bound == 1:
-            out[-1].append(' ')
-
-        out[-1].append(phoneme)
-
-    return [''.join(word) for word in out]
-
 
 def list_or(xs, ys):
     return [1 if x == 1 or y == 1 else 0 for x, y in zip(xs, ys)]
