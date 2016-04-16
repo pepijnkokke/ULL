@@ -1,0 +1,3213 @@
+test/1_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.81
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.24
+Recall:		0.61
+F1:		0.34
+test/3_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/8_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/25_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/50_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/75_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/100_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/250_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/500_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/750_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/1000_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/2500_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5000_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/7500_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/10000_1_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/1_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.80
+Recall:		0.39
+F1:		0.53
+Lexicon:
+Precision:	0.24
+Recall:		0.59
+F1:		0.34
+test/3_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/8_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/25_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/50_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/75_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/100_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/250_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/500_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/750_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/1000_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/2500_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5000_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/7500_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/10000_10_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/1_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.81
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.24
+Recall:		0.60
+F1:		0.34
+test/3_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.24
+Recall:		0.61
+F1:		0.34
+test/5_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/8_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/10_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/25_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/50_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/75_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/100_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/250_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/500_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/750_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/1000_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/2500_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/5000_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/7500_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/10000_100_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/1_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.81
+Recall:		0.39
+F1:		0.53
+Lexicon:
+Precision:	0.25
+Recall:		0.61
+F1:		0.35
+test/3_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/8_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/10_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/25_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/50_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/75_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/100_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/250_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/500_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/750_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/1000_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/2500_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5000_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/7500_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/10000_1000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/1_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.80
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.24
+Recall:		0.62
+F1:		0.35
+test/3_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/5_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.34
+test/8_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/25_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.34
+test/50_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/75_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/100_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/250_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/500_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/750_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/1000_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/2500_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/5000_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/7500_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10000_3000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.34
+test/1_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.80
+Recall:		0.38
+F1:		0.52
+Lexicon:
+Precision:	0.25
+Recall:		0.63
+F1:		0.36
+test/3_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/5_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.50
+Lexicon:
+Precision:	0.23
+Recall:		0.62
+F1:		0.33
+test/8_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.50
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/10_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/25_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/50_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/75_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/100_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/250_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/500_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/750_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/1000_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/2500_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/5000_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/7500_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/10000_5000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/1_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.80
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.24
+Recall:		0.63
+F1:		0.34
+test/3_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.23
+Recall:		0.62
+F1:		0.33
+test/5_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/8_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.33
+test/10_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.32
+test/25_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/50_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.33
+test/75_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.33
+test/100_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.32
+test/250_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.33
+test/500_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.32
+test/750_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.33
+test/1000_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.32
+test/2500_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.32
+test/5000_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.32
+test/7500_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.37
+F1:		0.50
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.33
+test/10000_10000_0.2.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.38
+F1:		0.51
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/1_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.81
+Recall:		0.41
+F1:		0.55
+Lexicon:
+Precision:	0.25
+Recall:		0.61
+F1:		0.35
+test/3_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/8_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.24
+Recall:		0.61
+F1:		0.34
+test/10_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/25_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/50_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/75_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/100_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/250_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.34
+test/500_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.34
+test/750_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/1000_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/2500_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/5000_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.34
+test/7500_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10000_1_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/1_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.80
+Recall:		0.41
+F1:		0.55
+Lexicon:
+Precision:	0.25
+Recall:		0.60
+F1:		0.35
+test/3_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/5_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/8_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/25_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/50_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/75_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/100_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/250_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/500_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/750_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/1000_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/2500_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/5000_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/7500_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10000_10_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/1_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.80
+Recall:		0.41
+F1:		0.54
+Lexicon:
+Precision:	0.24
+Recall:		0.60
+F1:		0.35
+test/3_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/5_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/8_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/10_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/25_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/50_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/75_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/100_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/250_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/500_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/750_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/1000_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/2500_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/5000_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.34
+test/7500_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/10000_100_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/1_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.79
+Recall:		0.41
+F1:		0.54
+Lexicon:
+Precision:	0.24
+Recall:		0.61
+F1:		0.35
+test/3_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/8_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/10_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/25_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/50_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/75_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/100_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/250_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/500_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/750_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/1000_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/2500_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/5000_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/7500_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/10000_1000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/1_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.78
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.24
+Recall:		0.62
+F1:		0.34
+test/3_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.40
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/5_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.33
+test/8_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/10_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/25_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/50_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/75_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/100_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/250_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/500_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/750_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/1000_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/2500_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/5000_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/7500_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/10000_3000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.33
+test/1_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.77
+Recall:		0.40
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.61
+F1:		0.33
+test/3_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.59
+F1:		0.32
+test/5_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/8_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/10_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.32
+test/25_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.40
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.61
+F1:		0.32
+test/50_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/75_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/100_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/250_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/500_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/750_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/1000_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/2500_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/5000_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/7500_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/10000_5000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/1_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.39
+F1:		0.52
+Lexicon:
+Precision:	0.23
+Recall:		0.60
+F1:		0.33
+test/3_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/5_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/8_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/10_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/25_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.22
+Recall:		0.60
+F1:		0.32
+test/50_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.50
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/75_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.50
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/100_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.60
+F1:		0.31
+test/250_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.50
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/500_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.60
+F1:		0.31
+test/750_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.59
+F1:		0.31
+test/1000_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.60
+F1:		0.31
+test/2500_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.60
+F1:		0.31
+test/5000_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.60
+F1:		0.31
+test/7500_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.60
+F1:		0.31
+test/10000_10000_0.5.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.39
+F1:		0.51
+Lexicon:
+Precision:	0.21
+Recall:		0.60
+F1:		0.32
+test/1_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.42
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/3_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.55
+F1:		0.31
+test/5_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/8_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.56
+F1:		0.31
+test/10_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/25_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/50_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/75_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/100_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/250_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/500_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/750_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/1000_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/2500_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/5000_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/7500_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/10000_1_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/1_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.42
+F1:		0.54
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/3_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/5_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/8_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/10_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/25_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/50_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/75_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/100_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/250_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/500_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/750_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/1000_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/2500_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/5000_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/7500_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/10000_10_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.57
+F1:		0.31
+test/1_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.42
+F1:		0.53
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/3_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/5_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/8_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/10_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/25_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/50_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/75_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/100_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/250_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/500_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/750_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/1000_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/2500_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/5000_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/7500_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.31
+test/10000_100_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.58
+F1:		0.32
+test/1_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.42
+F1:		0.54
+Lexicon:
+Precision:	0.23
+Recall:		0.59
+F1:		0.33
+test/3_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/5_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/8_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/10_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.56
+F1:		0.31
+test/25_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/50_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/75_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/100_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/250_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/500_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/750_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/1000_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/2500_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/5000_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/7500_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.22
+Recall:		0.56
+F1:		0.31
+test/10000_1000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.56
+F1:		0.31
+test/1_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.42
+F1:		0.54
+Lexicon:
+Precision:	0.23
+Recall:		0.58
+F1:		0.33
+test/3_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.56
+F1:		0.31
+test/5_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/8_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/10_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/25_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/50_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/75_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/100_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/250_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/500_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/750_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/1000_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/2500_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/5000_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/7500_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/10000_3000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.71
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/1_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.74
+Recall:		0.42
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.57
+F1:		0.32
+test/3_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.42
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.56
+F1:		0.31
+test/5_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.54
+F1:		0.30
+test/8_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.54
+F1:		0.30
+test/10_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.52
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/25_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/50_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/75_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/100_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/250_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.30
+test/500_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/750_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/1000_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/2500_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.72
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/5000_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/7500_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.21
+Recall:		0.55
+F1:		0.31
+test/10000_5000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.73
+Recall:		0.41
+F1:		0.53
+Lexicon:
+Precision:	0.22
+Recall:		0.56
+F1:		0.31
+test/1_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.76
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.54
+F1:		0.34
+test/3_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.43
+F1:		0.55
+Lexicon:
+Precision:	0.23
+Recall:		0.53
+F1:		0.32
+test/5_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.55
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/8_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/10_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.32
+test/25_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/50_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/75_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/100_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.32
+test/250_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.32
+test/500_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/750_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/1000_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.32
+test/2500_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.32
+test/5000_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/7500_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
+test/10000_10000_0.8.txt
+Ambiguous boundaries:
+Precision:	0.75
+Recall:		0.44
+F1:		0.56
+Lexicon:
+Precision:	0.24
+Recall:		0.51
+F1:		0.33
