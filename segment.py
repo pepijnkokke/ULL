@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 from sys          import argv
 from collections  import Counter
 from operator     import mul
@@ -7,6 +9,7 @@ from cPickle      import dump, load
 from os.path      import exists
 from json         import load
 from progress.bar import Bar
+from argparse     import ArgumentParser
 
 
 FILENAME = 'boundaries.pickle'
@@ -107,7 +110,7 @@ def evaluate(corpus_found, corpus_true):
     BF = f_zero(BP,BR)
 
     #How do you like my string boyz
-    return "P: " + str(P) + "\nR: " + str(R) + "\nF: " + str(F) + "\nLP: " + str(LP) + "\nLR: " + str(LR) + "\nLF: " + str(LF) + "\nBP: " + str(BP) + "\nBR: " + str(BR) + "\nBF: " + str(BF)
+    return "\nBP: " + str(BP) + "\nBR: " + str(BR) + "\nBF: " + str(BF)
 
 def precision_recall(found_items,true_items):
     """ Number of correct / number found """
@@ -143,7 +146,7 @@ def find_enclosing_boundaries(boundaries, i):
     return lower, upper
 
 
-def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
+def gibbs_iteration(corpus, rho=2.0, alpha=0.5, p_hash=0.5):
     """
     Perform a single Gibbs sampling iteration over the corpus.
     Boundaries are updated in the given corpus.
@@ -155,6 +158,7 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
     # create a progress bar
     bar = Bar('Evaluating boundaries', max=len(corpus.text))
+    p0 = lambda w: corpus.p0(w, p_hash)
 
     for i, phoneme in enumerate(corpus.text):
         # utterance boundaries are unambiguous, so they can be skipped
@@ -183,20 +187,20 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
         nu = n_dollar if corpus.utt_boundaries[upper] == 1 else n_ - n_dollar
 
         if boundaries[i] == 0:
-            p_h1_factor1 = (word_counts[w1] - 1 + alpha * corpus.p0(w1)) / (n_ + alpha)
+            p_h1_factor1 = (word_counts[w1] - 1 + alpha * p0(w1)) / (n_ + alpha)
         else:
-            p_h1_factor1 = (word_counts[w1] + alpha * corpus.p0(w1)) / (n_ + alpha)
+            p_h1_factor1 = (word_counts[w1] + alpha * p0(w1)) / (n_ + alpha)
 
         p_h1_factor2 = (nu + rho/2) / (n_ + rho)
 
         if boundaries[i] == 0:
-            p_h2_factor1 = (word_counts[w2] + alpha * corpus.p0(w2)) / (n_ + alpha)
+            p_h2_factor1 = (word_counts[w2] + alpha * p0(w2)) / (n_ + alpha)
             p_h2_factor3 = ((word_counts[w3] + 1 if w2 == w3 else 0 + alpha *
-                             corpus.p0(w3)) / (n_ + 1 + alpha))
+                             p0(w3)) / (n_ + 1 + alpha))
         else:
-            p_h2_factor1 = (word_counts[w2] - 1 + alpha * corpus.p0(w2)) / (n_ + alpha)
+            p_h2_factor1 = (word_counts[w2] - 1 + alpha * p0(w2)) / (n_ + alpha)
             p_h2_factor3 = ((word_counts[w3] - 1 + 1 if w2 == w3 else 0 + alpha *
-                             corpus.p0(w3)) / (n_ + 1 + alpha))
+                             p0(w3)) / (n_ + 1 + alpha))
 
         p_h2_factor2 = (n_ - n_dollar + rho/2) / (n_ + rho)
         p_h2_factor4 = ((nu + 1 if w2 == w3 else 0 + rho/2) / (n_ + 1 + rho))
@@ -215,33 +219,31 @@ def gibbs_iteration(corpus, rho=2.0, alpha=0.5):
 
 
 def main():
-    corpus = Corpus(argv[1])
+    parser = ArgumentParser(description='Segment a given corpus')
+    parser.add_argument('corpus', type=str, help="path to the corpus")
+    parser.add_argument('true_corpus', type=str, help="path to the true corpus")
+    parser.add_argument('--alpha', default=0.5, type=float, help="the alpha hyperparameter")
+    parser.add_argument('--phash', default=0.5, type=float, help="the p# hyperparameter")
+    parser.add_argument('-i', default=10, type=int, help="number of training epochs")
 
-    if exists(FILENAME):
-        print 'Loading existing data from {}'.format(FILENAME)
-        with open(FILENAME, 'rb') as f:
-            boundaries = load(f)
+    args = parser.parse_args()
 
-        corpus.boundaries = boundaries
+    corpus = Corpus(args.corpus)
 
     # run the specified number of iterations of Gibbs sampling, saving the
     # output after each iteration
-    for i in range(int(argv[2])):
+    for i in range(args.i):
         print i
-        gibbs_iteration(corpus)
+        gibbs_iteration(corpus, alpha=args.alpha, p_hash=args.phash)
 
         with open(FILENAME, 'wb') as f:
             print 'Saving data to {}'.format(FILENAME)
             dump(corpus.boundaries, f)
 
     # Evaluation (if true corpus is provided)
-    if len(argv) > 3:
-        corpus_true = Corpus(argv[3])
-        eval = evaluate(corpus, corpus_true)
-
-        with open(FILENAME_EVAL, 'wb') as f_eval:
-            print 'Saving evaluation data to {}'.format(FILENAME_EVAL)
-            dump(eval,f_eval)
+    corpus_true = Corpus(args.true_corpus)
+    eval = evaluate(corpus, corpus_true)
+    print eval
 
 
 if __name__ == "__main__":

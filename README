@@ -1,0 +1,7 @@
+To run:
+python2 segment.py --alpha {alpha} --phash {p#} -i {number of epochs} path/to/raw_corpus path/to/true_corpus
+(see `python2 segment.py --help` for more information)
+
+Boundaries get saved to 'boundaries.txt', ambiguous boundary evaluation gets
+printed. Note that this code has not been thoroughly tested and is rather slow;
+the code that was actually used for the report was written in C++ and can be found in segment.cpp
