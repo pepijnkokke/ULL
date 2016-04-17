@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage{natbib,textcomp}
+\usepackage{placeins}
 %\aclfinalcopy
 
 \title{Unsupervised Word Segmentation}
@@ -72,6 +73,7 @@ P(w_i = \ell | w_{-i} = \frac{n_\ell}{i-1+\alpha_0} + \frac{\alpha_0 P_0 (w_i = 
 \end{align}
 
 \subsection{Inference with Gibbs Sampling}
+\FloatBarrier
 Inference is done by calculating the probabilities of two hypotheses $h_1$ and
 $h_2$ at a potential boundary, where $h_1$ corresponds to not placing a
 boundary there and $h_2$ corresponds to the contrary.
@@ -139,10 +141,36 @@ The full algorithm is given in Algorithm \ref{algo:gibbs}.
     \label{algo:gibbs}
 \end{algorithm}
 
+\FloatBarrier
 \section{Experiments}
 % parameter settings
 
 \section{Results}
+The experiments were evaluated on the precision, recall and F1 (geometric mean
+of precision and recall) scores regarding the potentially ambiguous boundaries
+and the lexicon. The potentially ambiguous boundaries are the placed boundaries
+which are not utterance boundaries (which in the dataset are given, and thus
+unambiguous). The lexicon score refers to the set of retrieved words compared to
+the set of words occurring in the reference corpus. Two scenarios have been
+evaluated:
+\begin{itemize}
+  \item the performance on the training data after a certain number of Gibbs
+    sampling iterations, to measure how many iterations the algorithm needs to
+    converge
+  \item The performance on the test data to quantify the actual performance of
+    the algorithm
+\end{itemize}
+
+\subsection{Gibbs Iterations}
+The precision, recall and F1 scores were measured at specific intervals during
+the learning process. Figure \ref{fig:iterations} shows the results using the
+neutral value $0.5$ for $p_\#$ and varying values for $\alpha$. The scores are
+only for the potentially ambiguous boundaries.
+
+As can be seen from the similar shapes of each graph, the choice of $\alpha$ has
+little influence on the speed of convergence. In addition, the algorithm
+converges remarkably quickly, reaching it's maximum recall after only 10
+iterations.
 \begin{figure}[h!]
   \centering
   \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_1_0_0_5.pdf}}}
@@ -154,9 +182,11 @@ The full algorithm is given in Algorithm \ref{algo:gibbs}.
   \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_3000_0_0_5.pdf}}}
   \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_5000_0_0_5.pdf}}}
 
+  \caption{Ambiguous boundary performance over iterations with $p_\# = 0.5$ and varying $\alpha$}
   \label{fig:iterations}
-  \caption{Performance over iterations with $p_\# = 0.5$ and varying $\alpha$}
 \end{figure}
+
+\subsection{Testing Performance}
 
 \section{Conclusion}
 
