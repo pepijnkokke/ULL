@@ -46,11 +46,29 @@ As we grow up, we quickly pick up the language spoken in our direct environment.
 % - Gibbs Sampling
 %Note: could mention the parallel nature of Gibbs Sampling iterations and the use of multithread there in like a sentence just to show we understand their jam
 
-%I feel like this block below (about frequentist/bayesian) is kind of shit.
-Since the problem can be tackled with either a Frequentist or Bayesian approach, both should be considered. As indicated by (REF.GOLDMAN), previous works by (REF.VENKATARAMAN) and (REF.BATCHELDER) have shown the capabilities and risks of maximum likelihood estimation; as the problem is complex, computing global optima may become impossible, and approximate searches are required. As the search space will be reduced, algorithms may get stuck in a local optimum. Additionally, there's the risk of overfitting. A generative approach like MBDP-1 (REF.BRENT) proves to be more effective, though.
+%I feel like this block below that I wrote (about frequentist/bayesian) is kind of shit.
+Since the problem can be tackled with either a Frequentist or Bayesian approach, both should be considered. As indicated by (REF.GOLDMAN), previous works by (REF.VENKATARAMAN) and (REF.BATCHELDER) have shown the capabilities and risks of maximum likelihood estimation; as the problem is complex, computing global optima may become impossible, and approximate searches are required. As the search space will be reduced, algorithms may get stuck in a local optimum. Additionally, there's the risk of overfitting. A generative approach like MBDP-1 (REF.BRENT) proves to be more effective, though, and the method we use is based on that.
 
-%MBDP-1 goes here
+\subsection{Model}
+%This is basically Goldman 3.1 "in own words"
+The generative model splits all utterances (sentences) into words by assigning word boundaries. The corpus we use, the CHILDES database (REF.MACWHINNEY.AND.SNOW), contains sentences spoken to infants as regular text and as transcribed to phonemes. Since the corpus is already split on utterances, these provide free, certain word boundaries from the start. Let $w_i ... w_N$ be the words in the segmentation, $x_1 ... x_M$ be the phonemes and $\ell$ be a lexical form. For each $w_i$, the model decides whether the word is novel (i.e. the word should belong to a new $\ell$) with probability
+\begin{align}
+P(w_i novel) = \frac{\alpha_0}{n+\alpha_0}
+\end{align}
+where $\alpha_0$ is a parameter affecting the number of word types assigned as a new $\ell$. If it is novel , it creates a new $\ell$, generated with phonemic form
+\begin{align}
+P(w_i = x_1 ... x_M | w_i  \text{novel}) = p_\# (1-p_\#)^{M-1} \prod_{j=1}^M P(x_j)
+\end{align}
+where $p_\#$ is the probability of a word boundary being generated. Otherwise, it assigns to an existing $\ell$ with probability
+\begin{align}
+P(w_i = \ell | \text{not} w_i \text{novel}) = \frac{n_\ell}{n}
+\end{align}
+where $n_\ell$ is the number of $\ell$ found in $n$ words. Using these, we arrive at a distribution of words being assigned to lexical types given the words leading up to it $\textbf{w}_{-i} = \{ w_1 ... w_{i-1}\}$ :
+\begin{align}
+P(w_i = \ell | w_{-i} = \frac{n_\ell}{i-1+\alpha_0} + \frac{\alpha_0 P_0 (w_i = \ell )}{i - 1 + \alpha_0}
+\end{align}
 
+\subsection{Inference with Gibbs Sampling}
 Inference is done by calculating the probabilities of two hypotheses $h_1$ and
 $h_2$ at a potential boundary, where $h_1$ corresponds to not placing a
 boundary there and $h_2$ corresponds to the contrary.
