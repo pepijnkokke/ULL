@@ -155,18 +155,17 @@ We ran the model with various parameter settings, changing $\alpha$ (to determin
 \item $\alpha = \{1.0, 10.0, 100.0, 1000.0, 3000.0, 5000.0\}$
 \item $p_\# = \{0.2, 0.5, 0.8\}$
 \end{itemize}
-Afterwards, we computed precision, recall and F1 for the words found, the
-lexical types found and the placement of word boundaries. Keeping in line with
-\cite{goldwater2009}, $\rho$ is kept at a constant 2.
+Keeping in line with \cite{goldwater2009}, $\rho$ is kept at a constant 2.
 
-\section{Results}
 The experiments were evaluated on the precision, recall and F1 (geometric mean
 of precision and recall) scores regarding the potentially ambiguous boundaries
 and the lexicon. The potentially ambiguous boundaries are the placed boundaries
 which are not utterance boundaries (which in the dataset are given, and thus
 unambiguous). The lexicon score refers to the set of retrieved words compared to
-the set of words occurring in the reference corpus. Two scenarios have been
-evaluated:
+the set of words occurring in the reference corpus.
+
+\section{Results}
+Two scenarios have been evaluated:
 \begin{itemize}
   \item the performance on the training data after a certain number of Gibbs
     sampling iterations, to measure how many iterations the algorithm needs to
