@@ -36,7 +36,12 @@
 % - experiments
 % - results
 % - conclusion
-In this report, we apply word segmentation on simple utterances spoken to infants. We use a generative model to find the most likely placement of word boundaries and infer with Gibbs Sampling. Since the model assumes words to be independent, it has a tendency to undersegment. We find the performance to be invariant under various parameter initialisations.
+  We apply unsupervised word segmentation on simple utterances spoken to
+  infants, using a non-parametric Bayesian method. A generative unigram model is
+  used to model the likelihood of a given segmentation, with inference done
+  using Gibbs sampling. Since the model assumes words to be independent of their
+  context, it has a tendency to undersegment. Performance appears to be largely
+  invariant of the chosen hyperparameters.
 \end{abstract}
 
 \section{Introduction}
