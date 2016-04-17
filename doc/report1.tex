@@ -157,8 +157,8 @@ We ran the model with various parameter settings, changing $\alpha$ (to determin
 \end{itemize}
 Keeping in line with \cite{goldwater2009}, $\rho$ is kept at a constant 2.
 
-The experiments were evaluated on the precision, recall and F1 (geometric mean
-of precision and recall) scores regarding the potentially ambiguous boundaries
+The experiments were evaluated on the precision, recall and F1 score (geometric mean
+of precision and recall) regarding the potentially ambiguous boundaries
 and the lexicon. The potentially ambiguous boundaries are the placed boundaries
 which are not utterance boundaries (which in the dataset are given, and thus
 unambiguous). The lexicon score refers to the set of retrieved words compared to
@@ -241,13 +241,13 @@ The presented algorithm for word segmentation converges quickly to a moderate
 level of performance; it finds approximately 40\% of the word boundaries with a
 precision just below 80\%, while retrieving roughly 60\% of the lexicon. This
 falls in line with the prior knowledge that the algorithm is conservative with
-placing boundaries (which predicts a high precision), while having to tendency
-to undersegment (predicting a low recall). These results are nearly invariant of
-the chosen parameters; for instance, even very large changes in the value of
+placing boundaries (which predicts a high precision), while having a tendency
+to undersegment (predicting a low recall). These results are nearly invariant to
+the chosen hyperparameters; for instance, even very large changes in the value of
 $\alpha$ have a negligible impact on the performance. The algorithm converges
 very quickly, only requiring around 10 iterations of Gibbs sampling to reach
 optimal performance. This conflicts with the findings of \cite{goldwater2009},
-who report a burn-in period on the order of thousands of iterations. We were
+who report a burn-in period in the order of thousands of iterations. We were
 unable to find an explanation for this difference.
 
 \bibliographystyle{apalike}
