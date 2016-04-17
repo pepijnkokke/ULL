@@ -9,6 +9,8 @@
 \usepackage{amsmath,amssymb}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{subfig}
 %\aclfinalcopy
 
 \title{Unsupervised Word Segmentation}
@@ -140,7 +142,20 @@ The full algorithm is given in Algorithm \ref{algo:gibbs}.
 % parameter settings
 
 \section{Results}
-% we should likely encounter undersegmentation
+\begin{figure}[h!]
+  \centering
+  \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_1_0_0_5.pdf}}}
+  \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_10_0_0_5.pdf}}}
+
+  \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_100_0_0_5.pdf}}}
+  \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_1000_0_0_5.pdf}}}
+
+  \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_3000_0_0_5.pdf}}}
+  \subfloat[]{{\includegraphics[width=0.5\textwidth]{fig/over_time_5000_0_0_5.pdf}}}
+
+  \label{fig:iterations}
+  \caption{Performance over iterations with $p_\# = 0.5$ and varying $\alpha$}
+\end{figure}
 
 \section{Conclusion}
 
