@@ -66,7 +66,7 @@ The generative model splits all utterances (sentences) into words by assigning w
 \begin{align}
 P(w_i \text{novel}) = \frac{\alpha_0}{n+\alpha_0}
 \end{align}
-where $\alpha_0$ is a parameter affecting the number of words assigned as a new $\ell$. If it is novel , it creates a new $\ell$, generated with phonemic form
+where $\alpha_0$ is a parameter affecting the number of words assigned as a new $\ell$. If it is novel, it creates a new $\ell$, generated with phonemic form
 \begin{align}
 P(w_i = x_1 ... x_M | w_i  \text{novel}) = p_\# (1-p_\#)^{M-1} \prod_{j=1}^M P(x_j)
 \end{align}
