@@ -51,15 +51,15 @@ As we grow up, we quickly pick up the language spoken in our direct environment.
 %Note: could mention the parallel nature of Gibbs Sampling iterations and the use of multithread there in like a sentence just to show we understand their jam
 
 %I feel like this block below that I wrote (about frequentist/bayesian) is kind of shit.
-Since the problem can be tackled with either a Frequentist or Bayesian approach, both should be considered. As indicated by \cite{goldwater2009}, previous works by \cite{venkataraman2001} and \cite{batchelder2001} have shown the capabilities and risks of maximum likelihood estimation; as the problem is complex, computing global optima may become impossible, and approximate searches are required. As the search space will be reduced, algorithms may get stuck in a local optimum. Additionally, there's the risk of overfitting. A generative approach like MBDP-1 (\cite{brent1999}) proves to be more effective, though, and the method we use is based on that.
+Since the problem can be tackled with either a Frequentist or Bayesian approach, both should be considered. As indicated by \cite{goldwater2009}, previous works by \cite{venkataraman2001} and \cite{batchelder2001} have shown the capabilities and risks of maximum likelihood estimation; as the problem is complex, computing global optima may become impossible, and approximate searches are required. As the search space will be reduced, algorithms may get stuck in a local optimum. Additionally, there's the risk of overfitting. A generative approach like MBDP-1 by \cite{brent1999} proves to be more effective, though, and the method we use is based on that.
 
 \subsection{Model}
 %This is basically Goldwater 3.1 "in own words"
-The generative model splits all utterances (sentences) into words by assigning word boundaries. The corpus we use, the CHILDES database (\cite{mac1985}), contains sentences spoken to infants as regular text and as transcribed to phonemes. Since the corpus is already split on utterances, these provide free, certain word boundaries from the start. Let $w_i ... w_N$ be the words in the segmentation, $x_1 ... x_M$ be the phonemes and $\ell$ be a lexical form. For each $w_i$, the model decides whether the word is novel (i.e. the word should belong to a new $\ell$) with probability
+The generative model splits all utterances (sentences) into words by assigning word boundaries. The corpus we use, the CHILDES database from \cite{mac1985}, contains sentences spoken to infants as regular text and as transcribed to phonemes. Since the corpus is already split on utterances, these provide free, certain word boundaries from the start. Let $w_i ... w_N$ be the words in the segmentation, $x_1 ... x_M$ be the phonemes and $\ell$ be a lexical form. For each $w_i$, the model decides whether the word is novel (i.e. the word should belong to a new $\ell$) with probability
 \begin{align}
 P(w_i novel) = \frac{\alpha_0}{n+\alpha_0}
 \end{align}
-where $\alpha_0$ is a parameter affecting the number of word types assigned as a new $\ell$. If it is novel , it creates a new $\ell$, generated with phonemic form
+where $\alpha_0$ is a parameter affecting the number of words assigned as a new $\ell$. If it is novel , it creates a new $\ell$, generated with phonemic form
 \begin{align}
 P(w_i = x_1 ... x_M | w_i  \text{novel}) = p_\# (1-p_\#)^{M-1} \prod_{j=1}^M P(x_j)
 \end{align}
@@ -69,7 +69,7 @@ P(w_i = \ell | \text{not} w_i \text{novel}) = \frac{n_\ell}{n}
 \end{align}
 where $n_\ell$ is the number of $\ell$ found in $n$ words. Using these, we arrive at a distribution of words being assigned to lexical types given the words leading up to it $\textbf{w}_{-i} = \{ w_1 ... w_{i-1}\}$ :
 \begin{align}
-P(w_i = \ell | w_{-i} = \frac{n_\ell}{i-1+\alpha_0} + \frac{\alpha_0 P_0 (w_i = \ell )}{i - 1 + \alpha_0}
+P(w_i = \ell | w_{-i} = \frac{n_\ell}{i-1+\alpha} + \frac{\alpha P_0 (w_i = \ell )}{i - 1 + \alpha}
 \end{align}
 
 \subsection{Inference with Gibbs Sampling}
@@ -79,14 +79,14 @@ $h_2$ at a potential boundary, where $h_1$ corresponds to not placing a
 boundary there and $h_2$ corresponds to the contrary.
 They are calculated as
 \begin{align}
-  P(h_1 | h^-) =& \frac{n_{w1}^{(h^-)} + \alpha_0 P_0(w1)}{n^- + \alpha_0} \cdot
+  P(h_1 | h^-) =& \frac{n_{w1}^{(h^-)} + \alpha P_0(w1)}{n^- + \alpha} \cdot
                  \frac{n_u^{(h^-)} + \frac{\rho}{2}}{n^- + \rho}
                   \label{eq:h1} \\
   \begin{split}
-  P(h_2 | h^-) =& \frac{n_{w2}^{(h^-)} + \alpha_0 P_0(w2)}{n^- + \alpha_0}
+  P(h_2 | h^-) =& \frac{n_{w2}^{(h^-)} + \alpha P_0(w2)}{n^- + \alpha}
                   \cdot \frac{n^- - n_\$^{(h^-)} + \frac{\rho}{2}}{n^- + \rho} \\
-                & \cdot \frac{n_{w3}^{(h^-)} + I(w2 = w3) + \alpha_0 P_0(w3)}{n^-
-                  + 1 + \alpha_0} \\
+                & \cdot \frac{n_{w3}^{(h^-)} + I(w2 = w3) + \alpha P_0(w3)}{n^-
+                  + 1 + \alpha} \\
                 & \cdot \frac{n_u^{(h^-)} + I(w2 = w3) + \frac{\rho}{2}}{n^- + 1 + \rho}
                 \label{eq:h2}
   \end{split}
@@ -113,7 +113,7 @@ The full algorithm is given in Algorithm \ref{algo:gibbs}.
 
 \begin{algorithm}
     \begin{algorithmic}
-    \Function{Gibbs\_Iteration}{corpus, boundaries, $\rho$, $\alpha_0$, $p_\#$}
+    \Function{Gibbs\_Iteration}{corpus, boundaries, $\rho$, $\alpha$, $p_\#$}
         \For{$i \in$ $[0, |corpus|)$}
         \If{$i$ is an utterance boundary}
             \State continue \Comment{utterance boundaries are given and static}
@@ -143,7 +143,12 @@ The full algorithm is given in Algorithm \ref{algo:gibbs}.
 
 \FloatBarrier
 \section{Experiments}
-% parameter settings
+We ran the model with various parameter settings, changing both $\alpha$ (to determine the number of new lexical types) and $p_\#$ (the probability of a word boundary being generated). The parameter initialisations we used are:
+\begin{itemize}
+\item $\alpha = \{1.0, 10.0, 100.0, 1000.0, 3000.0, 5000.0\}$
+\item $p_\# = \{0.2, 0.5, 0.8\}$
+\end{itemize}
+while keeping the other value at a default of $\alpha = 0.1$ and $p_\# = 0.5$. Afterwards, we computed precision, recall and f zero for the words found, the lexical types found and the placement of word boundaries.
 
 \section{Results}
 The experiments were evaluated on the precision, recall and F1 (geometric mean
