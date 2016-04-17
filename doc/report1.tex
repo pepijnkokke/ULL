@@ -11,6 +11,7 @@
 \usepackage{algpseudocode}
 \usepackage{graphicx}
 \usepackage{subfig}
+\usepackage{natbib,textcomp}
 %\aclfinalcopy
 
 \title{Unsupervised Word Segmentation}
@@ -38,7 +39,7 @@
 \section{Introduction}
 %Intro looks done-ish? There's still a couple of refs in here that I didn't bother fixing right away. It's (REF.GOLDMAN) right now.
 %If we want to pad here, we can just repeat some of the stuff from the Method section
-As we grow up, we quickly pick up the language spoken in our direct environment. Not only as infants, but also in our later lives can we learn different languages. Doing so is not trivial, however, and one of the problems we have to overcome is that of discerning the individual words from a spoken sentence. We may be able to do so easily once we have a grasp of the language, but any exposure to a foreign language quickly reveals how difficult this task can be. Yet, despite this hurdle, even infants manage to eventually do so. A paper by (REF.GOLDMAN) investigates a statistical model that may explain how humans are able to eventually perform this task of word segmentation by observing a lot of data. In this report, we implemented their model, and although (REF.GOLDMAN) focuses on the effects of assuming words are independent or predictive (i.e. a word may predict what other words will occur in the sentence or are completely unrelated), we implemented the model only under the independence assumption. As we follow the work of (REF.GOLDMAN), we also apply it in the context of infant language learning. Word segmentation is not limited to this application, though, and can have other uses such as aiding in the transcription of aural data.
+As we grow up, we quickly pick up the language spoken in our direct environment. Not only as infants, but also in our later lives can we learn different languages. Doing so is not trivial, however, and one of the problems we have to overcome is that of discerning the individual words from a spoken sentence. We may be able to do so easily once we have a grasp of the language, but any exposure to a foreign language quickly reveals how difficult this task can be. Yet, despite this hurdle, even infants manage to eventually do so. A paper by \cite{goldman2009} investigates a statistical model that may explain how humans are able to eventually perform this task of word segmentation by observing a lot of data. In this report, we implemented their model, and although \cite{goldman2009} focuses on the effects of assuming words are independent or predictive (i.e. a word may predict what other words will occur in the sentence or are completely unrelated), we implemented the model only under the independence assumption. As we follow the work of \cite{goldman2009}, we also apply it in the context of infant language learning. Word segmentation is not limited to this application, though, and can have other uses such as aiding in the transcription of aural data.
 
 \section{Method}
 %Following the Goldman content order, we could explain:
@@ -49,11 +50,11 @@ As we grow up, we quickly pick up the language spoken in our direct environment.
 %Note: could mention the parallel nature of Gibbs Sampling iterations and the use of multithread there in like a sentence just to show we understand their jam
 
 %I feel like this block below that I wrote (about frequentist/bayesian) is kind of shit.
-Since the problem can be tackled with either a Frequentist or Bayesian approach, both should be considered. As indicated by (REF.GOLDMAN), previous works by (REF.VENKATARAMAN) and (REF.BATCHELDER) have shown the capabilities and risks of maximum likelihood estimation; as the problem is complex, computing global optima may become impossible, and approximate searches are required. As the search space will be reduced, algorithms may get stuck in a local optimum. Additionally, there's the risk of overfitting. A generative approach like MBDP-1 (REF.BRENT) proves to be more effective, though, and the method we use is based on that.
+Since the problem can be tackled with either a Frequentist or Bayesian approach, both should be considered. As indicated by \cite{goldman2009}, previous works by \cite{venkataraman2001} and \cite{batchelder2002} have shown the capabilities and risks of maximum likelihood estimation; as the problem is complex, computing global optima may become impossible, and approximate searches are required. As the search space will be reduced, algorithms may get stuck in a local optimum. Additionally, there's the risk of overfitting. A generative approach like MBDP-1 (\cite{brent1999}) proves to be more effective, though, and the method we use is based on that.
 
 \subsection{Model}
 %This is basically Goldman 3.1 "in own words"
-The generative model splits all utterances (sentences) into words by assigning word boundaries. The corpus we use, the CHILDES database (REF.MACWHINNEY.AND.SNOW), contains sentences spoken to infants as regular text and as transcribed to phonemes. Since the corpus is already split on utterances, these provide free, certain word boundaries from the start. Let $w_i ... w_N$ be the words in the segmentation, $x_1 ... x_M$ be the phonemes and $\ell$ be a lexical form. For each $w_i$, the model decides whether the word is novel (i.e. the word should belong to a new $\ell$) with probability
+The generative model splits all utterances (sentences) into words by assigning word boundaries. The corpus we use, the CHILDES database (\cite{mac1985}), contains sentences spoken to infants as regular text and as transcribed to phonemes. Since the corpus is already split on utterances, these provide free, certain word boundaries from the start. Let $w_i ... w_N$ be the words in the segmentation, $x_1 ... x_M$ be the phonemes and $\ell$ be a lexical form. For each $w_i$, the model decides whether the word is novel (i.e. the word should belong to a new $\ell$) with probability
 \begin{align}
 P(w_i novel) = \frac{\alpha_0}{n+\alpha_0}
 \end{align}
@@ -158,5 +159,8 @@ The full algorithm is given in Algorithm \ref{algo:gibbs}.
 \end{figure}
 
 \section{Conclusion}
+
+\bibliographystyle{apalike}
+\bibliography{report1}
 
 \end{document}
