@@ -62,7 +62,7 @@ Since the problem can be tackled with either a Frequentist or Bayesian approach,
 
 \subsection{Model}
 %This is basically Goldwater 3.1 "in own words"
-The generative model splits all utterances (sentences) into words by assigning word boundaries. The corpus we use, the CHILDES database from \cite{mac1985}, contains sentences spoken to infants as regular text and as transcribed to phonemes. Since the corpus is already split on utterances, these provide free, certain word boundaries from the start. Let $w_i ... w_N$ be the words in the segmentation, $x_1 ... x_M$ be the phonemes and $\ell$ be a lexical form. For each $w_i$, the model decides whether the word is novel (i.e. the word should belong to a new $\ell$) with probability
+The generative model splits all utterances (sentences) into words by assigning word boundaries. The corpus we use, the CHILDES database from \cite{mac1985}, contains sentences spoken to infants as regular text and as transcribed to phonemes. Since the corpus is already split on utterances, these provide free, certain word boundaries from the start. Let $w_i ... w_N$ be the words in the segmentation, $x_1 ... x_M$ be the phonemes and $\ell$ be a lexical type. For each $w_i$, the model decides whether the word is novel (i.e. the word should belong to a new $\ell$) with probability
 \begin{align}
 P(w_i novel) = \frac{\alpha_0}{n+\alpha_0}
 \end{align}
