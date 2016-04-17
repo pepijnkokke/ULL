@@ -40,7 +40,7 @@
 \section{Introduction}
 %Intro looks done-ish? There's still a couple of refs in here that I didn't bother fixing right away. It's (REF.GOLDMAN) right now.
 %If we want to pad here, we can just repeat some of the stuff from the Method section
-As we grow up, we quickly pick up the language spoken in our direct environment. Not only as infants, but also in our later lives can we learn different languages. Doing so is not trivial, however, and one of the problems we have to overcome is that of discerning the individual words from a spoken sentence. We may be able to do so easily once we have a grasp of the language, but any exposure to a foreign language quickly reveals how difficult this task can be. Yet, despite this hurdle, even infants manage to eventually do so. A paper by \cite{goldman2009} investigates a statistical model that may explain how humans are able to eventually perform this task of word segmentation by observing a lot of data. In this report, we implemented their model, and although \cite{goldman2009} focuses on the effects of assuming words are independent or predictive (i.e. a word may predict what other words will occur in the sentence or are completely unrelated), we implemented the model only under the independence assumption. As we follow the work of \cite{goldman2009}, we also apply it in the context of infant language learning. Word segmentation is not limited to this application, though, and can have other uses such as aiding in the transcription of aural data.
+As we grow up, we quickly pick up the language spoken in our direct environment. Not only as infants, but also in our later lives can we learn different languages. Doing so is not trivial, however, and one of the problems we have to overcome is that of discerning the individual words from a spoken sentence. We may be able to do so easily once we have a grasp of the language, but any exposure to a foreign language quickly reveals how difficult this task can be. Yet, despite this hurdle, even infants manage to eventually do so. A paper by \cite{goldman2009} investigates a statistical model that may explain how humans are able to eventually perform this task of word segmentation by observing a lot of data. In this report, we implemented their model, and although \cite{goldman2009} focuses on the effects of assuming words are independent or predictive (i.e. a word may predict what other words will occur in the sentence or are completely unrelated), we implemented the model only under the independence assumption. As we follow the work of \cite{goldman2009}, we also apply it in the context of infant language learning. Word segmentation is not limited to this application, though, and can have other uses such as aiding in the transcription of aural data. 
 
 \section{Method}
 %Following the Goldman content order, we could explain:
@@ -162,6 +162,7 @@ evaluated:
 \end{itemize}
 
 \subsection{Gibbs Iterations}
+\FloatBarrier
 The precision, recall and F1 scores were measured at specific intervals during
 the learning process. Figure \ref{fig:iterations} shows the results using the
 neutral value $0.5$ for $p_\#$ and varying values for $\alpha$. The scores are
@@ -187,7 +188,41 @@ iterations.
 \end{figure}
 
 \subsection{Testing Performance}
+Performance on the test data has been measured by first running the algorithm on
+the training data for 10000 iterations, appending the test data, and running 10
+additional iterations only on the testing portion. Similarly, the precision, recall and F1
+scores are only evaluated on the testing portion. Figures \ref{fig:p02},
+\ref{fig:p05} and \ref{fig:p08} show the performance as a function of the $\alpha$
+parameter with $p_\#$ being respectively 0.2, 0.5 and 0.8.
 
+Although the difference is fairly minor, $p_\# = 0.8$ performs notably worse
+than the other values. The value of $\alpha$ appears to have little impact;
+interestingly, while the performance with $p_\#$ at 0.2 or 0.5 dips at very low
+(0.5 and 1) values for $\alpha$, $p_\# = 0.8$ actually peaks at those values.
+
+\begin{figure}[h!]
+  \centering
+  \subfloat[Word boundaries]{{\includegraphics[width=0.5\textwidth]{fig/test_boundaries_0_2.pdf}}}
+  \subfloat[Lexicon]{{\includegraphics[width=0.5\textwidth]{fig/test_lexicon_0_2.pdf}}}
+  \caption{Testing performance for $p_\# = 0.2$ and varying $\alpha$}
+  \label{fig:p02}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \subfloat[Word boundaries]{{\includegraphics[width=0.5\textwidth]{fig/test_boundaries_0_5.pdf}}}
+  \subfloat[Lexicon]{{\includegraphics[width=0.5\textwidth]{fig/test_lexicon_0_5.pdf}}}
+  \caption{Testing performance for $p_\# = 0.5$ and varying $\alpha$}
+  \label{fig:p05}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+  \subfloat[Word boundaries]{{\includegraphics[width=0.5\textwidth]{fig/test_boundaries_0_8.pdf}}}
+  \subfloat[Lexicon]{{\includegraphics[width=0.5\textwidth]{fig/test_lexicon_0_8.pdf}}}
+  \caption{Testing performance for $p_\# = 0.8$ and varying $\alpha$}
+  \label{fig:p08}
+\end{figure}
+
+\FloatBarrier
 \section{Conclusion}
 
 \bibliographystyle{apalike}
